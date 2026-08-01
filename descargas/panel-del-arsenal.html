@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dasvo IA Builders — Panel del arsenal</title>
+<style>
+:root{--az:#1e5f8a;--tx:#1a2733;--mu:#6b7c8a;--bd:#dbe5ec;--bg:#f4f8fb}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--tx);background:#fff}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+header.top{background:linear-gradient(160deg,#123c58,#1e5f8a);color:#fff;padding:52px 0 44px}
+header.top h1{margin:0 0 8px;font-size:38px;letter-spacing:-.5px}
+header.top p{margin:0;opacity:.88;font-size:17px;max-width:760px}
+.kpis{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.kpi{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:12px 18px}
+.kpi b{display:block;font-size:24px;line-height:1.2}
+.kpi span{font-size:12.5px;opacity:.85}
+h2{font-size:26px;margin:0 0 6px;letter-spacing:-.3px}
+.sub{color:var(--mu);margin:0 0 22px;font-size:14.5px}
+section{padding:48px 0;border-top:1px solid var(--bd)}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
+#q{flex:1;min-width:220px;padding:11px 14px;border:1.5px solid var(--bd);border-radius:8px;font-size:15px}
+#q:focus{outline:none;border-color:var(--az)}
+.fbtn{padding:9px 15px;border:1.5px solid var(--bd);background:#fff;border-radius:20px;cursor:pointer;font-size:13.5px;color:var(--mu)}
+.fbtn.on{background:var(--az);color:#fff;border-color:var(--az)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+.card{border:1.5px solid var(--bd);border-radius:11px;padding:18px;background:#fff}
+.card-h{border-left:4px solid var(--c);padding-left:12px;margin-bottom:10px}
+.card h3{margin:6px 0 0;font-size:19px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--c)}
+.pill{color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.6px;padding:3px 8px;border-radius:4px}
+.res{margin:0 0 10px;font-size:14.5px;color:#3d4d5c}
+details summary{cursor:pointer;font-size:13.5px;color:var(--az);font-weight:600}
+.det{padding-top:10px}
+.lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--mu);margin:10px 0 6px;font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:3px 10px;font-size:12.5px;color:#42535f}
+.det ul{margin:0;padding-left:18px;font-size:13.5px;color:#42535f}
+code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
+pre{background:#12222e;color:#dbe9f2;padding:16px 18px;border-radius:9px;overflow:auto;font-size:13px;line-height:1.55}
+.guias{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.guia{display:block;text-decoration:none;color:inherit;border:1.5px solid var(--bd);border-radius:11px;padding:18px;transition:.15s}
+.guia:hover{border-color:var(--az);box-shadow:0 3px 14px rgba(30,95,138,.1)}
+.guia h4{margin:0 0 8px;font-size:16.5px;color:var(--az)}
+.guia p{margin:0 0 10px;font-size:14px;color:#4a5c6a}
+.fn{font-size:12px;color:var(--mu);font-family:ui-monospace,Menlo,Consolas,monospace}
+.dia{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border:1.5px solid var(--bd);border-radius:9px;margin-bottom:9px;cursor:pointer}
+.dia input{display:none}
+.marca{flex:0 0 20px;height:20px;border:2px solid var(--bd);border-radius:5px;margin-top:2px}
+.dia input:checked ~ .marca{background:#2f8f6b;border-color:#2f8f6b}
+.dia input:checked ~ .dtxt{opacity:.5;text-decoration:line-through}
+.dtxt{font-size:14.5px}
+.fig{width:100%;height:auto;border:1.5px solid var(--bd);border-radius:11px;margin-bottom:26px;background:#fff}
+.aviso{background:#fdfaf5;border:1.5px solid #e6d3b4;border-radius:10px;padding:20px 22px}
+.aviso h3{margin:0 0 10px;font-size:17px}
+.aviso li{font-size:14.5px;margin-bottom:7px;color:#4a5c6a}
+footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;border-top:1px solid var(--bd)}
+.hide{display:none}
+@media(max-width:640px){header.top h1{font-size:28px}h2{font-size:22px}}
+</style></head><body>
+
+<header class="top"><div class="wrap">
+  <h1>Dasvo IA Builders</h1>
+  <p style="margin-bottom:10px"><a href="https://dasvo-recursos.vercel.app" style="color:#9fd8f5">https://dasvo-recursos.vercel.app</a> &mdash; la biblioteca completa, siempre actualizada.</p>
+  <p>El arsenal completo para construir, blindar, vender, entregar y escalar plataformas de agendamiento a medida para negocios locales, usando Claude Code.</p>
+  <div class="kpis">
+    <div class="kpi"><b>13</b><span>skills listas para copiar</span></div>
+    <div class="kpi"><b>4</b><span>guias de fondo</span></div>
+    <div class="kpi"><b>12</b><span>perfiles de nicho</span></div>
+    <div class="kpi"><b>29</b><span>errores catalogados</span></div>
+    <div class="kpi"><b>7</b><span>dias hasta la primera propuesta</span></div>
+  </div>
+</div></header>
+
+<section><div class="wrap">
+  <h2>Como se instala</h2>
+  <p class="sub">Dos lineas dentro de Claude Code. Sin descargar carpetas, sin tocar nada oculto.</p>
+  <pre># 1. Le dices donde queda la caja de herramientas
+/plugin marketplace add Dasvoia/dasvo-ia-builders
+
+# 2. La abres
+/plugin install dasvo@dasvo-ia-builders
+
+# 3. Las despiertas
+/reload-plugins</pre>
+  <p class="sub">Despues escribe <code>/</code> y deben salir trece que empiezan con <b>dasvo</b>. Si salen, terminaste. Empieza por <code>/dasvo:setup-cuentas</code>.</p>
+  <p class="sub">Necesitas Claude Code instalado y una cuenta de pago de Claude (Pro, Max, Team o Enterprise). El plan gratis no lo incluye.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Las 13 skills</h2>
+  <p class="sub">Busca por nombre o por lo que necesitas hacer. Cada tarjeta muestra las frases con las que se activa sola.</p>
+  <div class="tools">
+    <input id="q" placeholder="Buscar: llaves, objecion, RLS, dominio, demo, tokens...">
+    <button class="fbtn on" data-f="0">Todas</button>
+    <button class="fbtn" data-f="1">1 · Montar</button>
+    <button class="fbtn" data-f="2">2 · Blindar</button>
+    <button class="fbtn" data-f="3">3 · Vender</button>
+    <button class="fbtn" data-f="4">4 · Escalar</button>
+  </div>
+  <div class="grid" id="grid">
+    <article class="card" data-fase="1" data-txt="setup-cuentas crea y conecta supabase, github y vercel, consigue las llaves y las deja en .env.local sin que pasen nunca por el chat. guía al usuario paso a paso para crear y conectar las cuentas de supabase, github y vercel, conseguir las llaves (api keys) y dejarlas configuradas de forma segura en .env.local. úsala cuando el usuario diga que no tiene cuenta en alguno de estos servicios, no sepa dónde están las llaves, necesite configurar variables de entorno, o al iniciar un proyecto nuevo que use estos servicios.">
+      <header class="card-h" style="--c:#1e5f8a">
+        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+        <h3>/setup-cuentas</h3>
+      </header>
+      <p class="res">Crea y conecta Supabase, GitHub y Vercel, consigue las llaves y las deja en .env.local sin que pasen nunca por el chat.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">Invocala escribiendo /setup-cuentas</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/setup-cuentas/SKILL.md</code> — 110 lineas</li><li>Sin archivos de apoyo: todo esta en el SKILL.md</li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="1" data-txt="sistema-de-citas la principal. te entrevista, escribe el claude.md del proyecto y construye el sistema por etapas verificadas, una a la vez. construye un sistema completo de agendamiento de citas en línea para un negocio local (consultorio, barbería, spa, clínica estética, veterinaria, taller) usando next.js, supabase y vercel. úsala cuando el usuario quiera crear un sistema de reservas, una agenda en línea, una plataforma de citas para un cliente, o diga &quot;quiero hacer el sistema del video&quot;. primero entrevista al usuario con preguntas ">
+      <header class="card-h" style="--c:#1e5f8a">
+        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+        <h3>/sistema-de-citas</h3>
+      </header>
+      <p class="res">La principal. Te entrevista, escribe el CLAUDE.md del proyecto y construye el sistema por etapas verificadas, una a la vez.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">quiero hacer el sistema del video</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/sistema-de-citas/SKILL.md</code> — 154 lineas</li><li>Sin archivos de apoyo: todo esta en el SKILL.md</li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="1" data-txt="adaptar-a-nicho convierte el sistema base en el de otro negocio cambiando reglas, vocabulario y datos, no solo los colores. 12 perfiles listos. adapta el sistema de reservas base (construido para un consultorio odontológico) a otro tipo de negocio local, cambiando reglas de negocio, modelo de datos, vocabulario, servicios y estilo visual, no solo los colores. trae 12 perfiles de nicho listos con servicios, precios orientativos, horarios, paleta y la diferencia estructural de cada uno.">
+      <header class="card-h" style="--c:#1e5f8a">
+        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+        <h3>/adaptar-a-nicho</h3>
+      </header>
+      <p class="res">Convierte el sistema base en el de otro negocio cambiando reglas, vocabulario y datos, no solo los colores. 12 perfiles listos.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">adaptar el sistema a una barbería</span><span class="chip">lo mismo pero para un spa</span><span class="chip">quiero venderlo a una veterinaria</span><span class="chip">cambiar el sistema de odontología a peluquería</span><span class="chip">sirve para un taller mecánico</span><span class="chip">cómo lo hago para un salón de uñas</span><span class="chip">adaptalo a una academia</span><span class="chip">el sistema para psicologia</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/adaptar-a-nicho/SKILL.md</code> — 188 lineas</li><li><code>references/nichos.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="1" data-txt="ahorro-tokens corta las tres fugas que gastan tu plan: contexto repetido, errores mal reportados y archivos pegados en el chat. hace que el trabajo con claude code gaste menos tokens y avance más rápido. úsala cuando el usuario pregunte cómo gastar menos, diga que se le acaban los límites o créditos, la sesión esté lenta o muy cargada, o al arrancar un proyecto largo para establecer buenos hábitos desde el inicio.">
+      <header class="card-h" style="--c:#1e5f8a">
+        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+        <h3>/ahorro-tokens</h3>
+      </header>
+      <p class="res">Corta las tres fugas que gastan tu plan: contexto repetido, errores mal reportados y archivos pegados en el chat.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">Invocala escribiendo /ahorro-tokens</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/ahorro-tokens/SKILL.md</code> — 90 lineas</li><li>Sin archivos de apoyo: todo esta en el SKILL.md</li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="2" data-txt="seguridad-web la revision obligatoria antes de entregar, publicar o grabar. llaves, rls, validacion en servidor, datos personales y pantalla limpia. revisión de seguridad obligatoria antes de entregar un proyecto a un cliente o publicarlo. cubre llaves y secretos, políticas rls de supabase, validación en el servidor, datos personales y privacidad, y grabación segura de pantalla. úsala cuando el usuario vaya a entregar o publicar un proyecto, mencione seguridad, llaves, api keys, datos personales, o antes de grabar la pantalla para un video o d">
+      <header class="card-h" style="--c:#2f8f6b">
+        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+        <h3>/seguridad-web</h3>
+      </header>
+      <p class="res">La revision obligatoria antes de entregar, publicar o grabar. Llaves, RLS, validacion en servidor, datos personales y pantalla limpia.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">Invocala escribiendo /seguridad-web</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/seguridad-web/SKILL.md</code> — 100 lineas</li><li>Sin archivos de apoyo: todo esta en el SKILL.md</li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="2" data-txt="arreglar-errores cuando algo falla y no sabes describirlo. reporte estructurado, 6 familias de fallo, protocolo de 6 pasos y regla anti-bucle. diagnostica y arregla cualquier fallo de un proyecto next.js + supabase + vercel con un protocolo ordenado: primero pide el reporte completo, clasifica el fallo en una de seis familias, formula una sola hipótesis y hace el cambio mínimo que la comprueba. evita el bucle de parchar a ciegas.">
+      <header class="card-h" style="--c:#2f8f6b">
+        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+        <h3>/arreglar-errores</h3>
+      </header>
+      <p class="res">Cuando algo falla y no sabes describirlo. Reporte estructurado, 6 familias de fallo, protocolo de 6 pasos y regla anti-bucle.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">no funciona</span><span class="chip">no me sirve</span><span class="chip">se rompio</span><span class="chip">se rompió todo</span><span class="chip">me sale error</span><span class="chip">me salio un error rojo</span><span class="chip">no carga</span><span class="chip">la pagina esta en blanco</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/arreglar-errores/SKILL.md</code> — 155 lineas</li><li><code>references/errores-comunes.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="2" data-txt="publicar-online de tu computador a una url real: github, vercel, variables de entorno, dominio propio y verificacion desde un celular. lleva el proyecto de la computadora a internet con una url real que el cliente pueda abrir: revisión previa, subida a github en repositorio privado, conexión con vercel, variables de entorno configuradas antes del primer despliegue, dominio propio y verificación en un celular real. incluye el costo mensual verdadero por cliente y la restricción de licencia de vercel hobby.">
+      <header class="card-h" style="--c:#2f8f6b">
+        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+        <h3>/publicar-online</h3>
+      </header>
+      <p class="res">De tu computador a una URL real: GitHub, Vercel, variables de entorno, dominio propio y verificacion desde un celular.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">subirlo a internet</span><span class="chip">publicar la pagina</span><span class="chip">publicar la web</span><span class="chip">quiero que el cliente lo vea</span><span class="chip">cómo lo pongo online</span><span class="chip">pasarlo a produccion</span><span class="chip">deploy</span><span class="chip">hacer deploy</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/publicar-online/SKILL.md</code> — 193 lineas</li><li><code>references/checklist-despliegue.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="3" data-txt="conseguir-clientes toma un prospecto, lo califica contra 8 senales, clona y personaliza la demo, escribe el guion del loom y el primer mensaje. convierte un negocio prospecto concreto en una demo personalizada desplegada y un primer mensaje enviado. investiga el negocio, lo califica, clona el proyecto base con su marca y servicios reales, lo despliega, y entrega el guion del loom, los mensajes de contacto y el seguimiento. úsala cuando el usuario pegue el instagram, la web o el google maps de un negocio, o diga cosas como &quot;tengo un prospe">
+      <header class="card-h" style="--c:#c9862a">
+        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+        <h3>/conseguir-clientes</h3>
+      </header>
+      <p class="res">Toma un prospecto, lo califica contra 8 senales, clona y personaliza la demo, escribe el guion del Loom y el primer mensaje.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">Invocala escribiendo /conseguir-clientes</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/conseguir-clientes/SKILL.md</code> — 174 lineas</li><li><code>references/calificacion-y-plantillas.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="3" data-txt="cerrar-venta calculadora del dolor en pesos, guion de la llamada de 20 minutos, el precio, 12 objeciones y la propuesta de una pagina. prepara, ejecuta y cierra la venta de un cliente concreto que ya respondió. calcula en pantalla cuánto pierde el negocio al mes, arma el guion de la llamada de diagnóstico, recomienda paquete y precio, responde objeciones palabra por palabra, genera la propuesta de una página y programa el seguimiento. úsala cuando el usuario diga cosas como &quot;me contestó el del restaurante y ahora qué&quot;, &quot;tengo lla">
+      <header class="card-h" style="--c:#c9862a">
+        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+        <h3>/cerrar-venta</h3>
+      </header>
+      <p class="res">Calculadora del dolor en pesos, guion de la llamada de 20 minutos, el precio, 12 objeciones y la propuesta de una pagina.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">Invocala escribiendo /cerrar-venta</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/cerrar-venta/SKILL.md</code> — 268 lineas</li><li><code>references/objeciones-y-paquetes.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="3" data-txt="entregar-al-cliente de &quot;funciona en mi computador&quot; a &quot;me paga la mensualidad&quot;: checklist, cuentas, manual, capacitacion y primeros 30 dias. lleva el sistema de reservas de &quot;funciona en mi computador&quot; a &quot;el cliente lo está usando y me paga la mensualidad&quot;. cubre la checklist previa a la entrega, a nombre de quién quedan las cuentas de supabase y vercel, el manual de uso del dueño, la capacitación de 30 minutos con el equipo, el seguimiento de los primeros 30 días, el alcance del mantenimiento mensual y el pedido de testimonio y referid">
+      <header class="card-h" style="--c:#c9862a">
+        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+        <h3>/entregar-al-cliente</h3>
+      </header>
+      <p class="res">De &quot;funciona en mi computador&quot; a &quot;me paga la mensualidad&quot;: checklist, cuentas, manual, capacitacion y primeros 30 dias.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">ya terminé el sistema y ahora qué</span><span class="chip">cómo se lo entrego al cliente</span><span class="chip">entrega</span><span class="chip">checklist de entrega</span><span class="chip">a nombre de quién dejo las cuentas</span><span class="chip">el cliente quiere ser dueño de la base de datos</span><span class="chip">traspasar Supabase al cliente</span><span class="chip">manual para el cliente</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/entregar-al-cliente/SKILL.md</code> — 252 lineas</li><li><code>references/plantillas-entrega.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="4" data-txt="crear-skill convierte lo que repites en una skill propia, con el description bien escrito para que se active cuando debe. crea una skill nueva de claude code bien formada, sin que el usuario tenga que saber el formato. entrevista corto, decide si de verdad debe ser una skill (o si va al claude.md o a un subagente), escribe el frontmatter y el description con las frases disparadoras correctas, crea la carpeta en la ruta que corresponde y prueba que se active.">
+      <header class="card-h" style="--c:#1a2733">
+        <span class="pill" style="background:#1a2733">FASE 4 · ESCALAR</span>
+        <h3>/crear-skill</h3>
+      </header>
+      <p class="res">Convierte lo que repites en una skill propia, con el description bien escrito para que se active cuando debe.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">quiero una skill para X</span><span class="chip">hazme una skill</span><span class="chip">hazme un skill</span><span class="chip">crear skil</span><span class="chip">quiero un comando /algo</span><span class="chip">comando personalizado</span><span class="chip">siempre le pido lo mismo a Claude</span><span class="chip">cómo automatizo esto que repito</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/crear-skill/SKILL.md</code> — 100 lineas</li><li><code>references/formato-completo.md</code></li></ul>
+        </div>
+      </details>
+    </article>
+    <article class="card" data-fase="4" data-txt="crear-subagente delega el trabajo pesado a un subagente que corre en su propia ventana y solo devuelve el resumen. 4 listos para copiar. crea un subagente de claude code y decide si conviene delegarle el trabajo. entrevista qué debe hacer y qué debe devolver, escribe el archivo con el frontmatter correcto y un system prompt con rol, alcance, prohibiciones y formato de salida, le da solo las herramientas mínimas y lo prueba con un encargo real.">
+      <header class="card-h" style="--c:#1a2733">
+        <span class="pill" style="background:#1a2733">FASE 4 · ESCALAR</span>
+        <h3>/crear-subagente</h3>
+      </header>
+      <p class="res">Delega el trabajo pesado a un subagente que corre en su propia ventana y solo devuelve el resumen. 4 listos para copiar.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">quiero un subagente</span><span class="chip">hazme un agente</span><span class="chip">crear subagent</span><span class="chip">un agente que revise la seguridad</span><span class="chip">uno que busque en todo el código</span><span class="chip">que pruebe la app y me diga qué falla</span><span class="chip">que escriba los textos del cliente</span><span class="chip">quiero que otro Claude haga esto</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/crear-subagente/SKILL.md</code> — 109 lineas</li><li><code>references/subagentes-listos.md</code></li></ul>
+        </div>
+      </details>
+    </article></div>
+  <p class="sub" id="vacio" style="display:none">Nada coincide con esa busqueda.</p>
+</div></section>
+
+<section><div class="wrap">
+  <h2>El mapa</h2>
+  <p class="sub">Las cuatro fases se recorren una sola vez por cliente.</p>
+  <svg class="fig" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1000" height="620" fill="#ffffff"/>
+  <text x="40" y="48" font-size="26" font-weight="bold" fill="#1a2733">El arsenal: 13 skills, 4 fases</text>
+  <text x="40" y="74" font-size="14" fill="#6b7c8a">Dasvo IA Builders — el orden en que se usan, de izquierda a derecha</text>
+  <line x1="40" y1="92" x2="960" y2="92" stroke="#dbe5ec" stroke-width="2"/>
+
+  <!-- FASE 1 -->
+  <rect x="40" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <rect x="40" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
+  <rect x="40" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <text x="147" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 1 — MONTAR</text>
+  <text x="147" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Antes de escribir nada</text>
+
+  <rect x="58" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
+  <text x="72" y="214" font-size="13.5" font-weight="bold" fill="#1e5f8a">/setup-cuentas</text>
+  <text x="72" y="232" font-size="11.5" fill="#6b7c8a">Supabase, GitHub y Vercel</text>
+  <text x="72" y="248" font-size="11.5" fill="#6b7c8a">Llaves sin errores</text>
+
+  <rect x="58" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
+  <text x="72" y="292" font-size="13.5" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
+  <text x="72" y="310" font-size="11.5" fill="#6b7c8a">Entrevista, CLAUDE.md</text>
+  <text x="72" y="326" font-size="11.5" fill="#6b7c8a">y construccion por etapas</text>
+
+  <rect x="58" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
+  <text x="72" y="370" font-size="13.5" font-weight="bold" fill="#1e5f8a">/adaptar-a-nicho</text>
+  <text x="72" y="388" font-size="11.5" fill="#6b7c8a">12 perfiles de negocio</text>
+  <text x="72" y="404" font-size="11.5" fill="#6b7c8a">listos para aplicar</text>
+
+  <rect x="58" y="426" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
+  <text x="72" y="448" font-size="13.5" font-weight="bold" fill="#1e5f8a">/ahorro-tokens</text>
+  <text x="72" y="466" font-size="11.5" fill="#6b7c8a">Que el plan rinda</text>
+  <text x="72" y="482" font-size="11.5" fill="#6b7c8a">el doble</text>
+
+  <!-- FASE 2 -->
+  <rect x="273" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <rect x="273" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
+  <rect x="273" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <text x="380" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 2 — BLINDAR</text>
+  <text x="380" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Antes de mostrarlo a nadie</text>
+
+  <rect x="291" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
+  <text x="305" y="214" font-size="13.5" font-weight="bold" fill="#2f8f6b">/seguridad-web</text>
+  <text x="305" y="232" font-size="11.5" fill="#6b7c8a">Llaves, RLS, validacion</text>
+  <text x="305" y="248" font-size="11.5" fill="#6b7c8a">en el servidor, privacidad</text>
+
+  <rect x="291" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
+  <text x="305" y="292" font-size="13.5" font-weight="bold" fill="#2f8f6b">/arreglar-errores</text>
+  <text x="305" y="310" font-size="11.5" fill="#6b7c8a">Protocolo de 6 pasos</text>
+  <text x="305" y="326" font-size="11.5" fill="#6b7c8a">29 errores catalogados</text>
+
+  <rect x="291" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
+  <text x="305" y="370" font-size="13.5" font-weight="bold" fill="#2f8f6b">/publicar-online</text>
+  <text x="305" y="388" font-size="11.5" fill="#6b7c8a">GitHub, Vercel, dominio</text>
+  <text x="305" y="404" font-size="11.5" fill="#6b7c8a">y URL real</text>
+
+  <rect x="291" y="426" width="179" height="66" rx="7" fill="#fbfdfc" stroke="#c9dae6" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="305" y="452" font-size="12" fill="#6b7c8a">Regla del paquete:</text>
+  <text x="305" y="470" font-size="12" font-weight="bold" fill="#1a2733">nada sale sin pasar</text>
+  <text x="305" y="486" font-size="12" font-weight="bold" fill="#1a2733">por seguridad-web</text>
+
+  <!-- FASE 3 -->
+  <rect x="506" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <rect x="506" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
+  <rect x="506" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <text x="613" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 3 — VENDER</text>
+  <text x="613" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Del prospecto al pago</text>
+
+  <rect x="524" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
+  <text x="538" y="214" font-size="13.5" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
+  <text x="538" y="232" font-size="11.5" fill="#6b7c8a">Califica, clona la demo</text>
+  <text x="538" y="248" font-size="11.5" fill="#6b7c8a">y escribe el mensaje</text>
+
+  <rect x="524" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
+  <text x="538" y="292" font-size="13.5" font-weight="bold" fill="#c9862a">/cerrar-venta</text>
+  <text x="538" y="310" font-size="11.5" fill="#6b7c8a">Calculadora del dolor,</text>
+  <text x="538" y="326" font-size="11.5" fill="#6b7c8a">precio y 12 objeciones</text>
+
+  <rect x="524" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
+  <text x="538" y="370" font-size="13.5" font-weight="bold" fill="#c9862a">/entregar-al-cliente</text>
+  <text x="538" y="388" font-size="11.5" fill="#6b7c8a">Manual, capacitacion</text>
+  <text x="538" y="404" font-size="11.5" fill="#6b7c8a">y primeros 30 dias</text>
+
+  <rect x="524" y="426" width="179" height="66" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="538" y="452" font-size="12" fill="#6b7c8a">Aqui es donde se</text>
+  <text x="538" y="470" font-size="12" font-weight="bold" fill="#1a2733">gana el dinero.</text>
+  <text x="538" y="486" font-size="12" fill="#6b7c8a">Construir es la parte facil.</text>
+
+  <!-- FASE 4 -->
+  <rect x="739" y="112" width="221" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <rect x="739" y="112" width="221" height="42" rx="10" fill="#1a2733"/>
+  <rect x="739" y="140" width="221" height="14" fill="#1a2733"/>
+  <text x="849" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 4 — ESCALAR</text>
+  <text x="849" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Cuando ya no das abasto</text>
+
+  <rect x="757" y="192" width="185" height="66" rx="7" fill="#ffffff" stroke="#1a2733" stroke-width="1.5"/>
+  <text x="771" y="214" font-size="13.5" font-weight="bold" fill="#1a2733">/crear-skill</text>
+  <text x="771" y="232" font-size="11.5" fill="#6b7c8a">Convierte lo que repites</text>
+  <text x="771" y="248" font-size="11.5" fill="#6b7c8a">en una skill propia</text>
+
+  <rect x="757" y="270" width="185" height="66" rx="7" fill="#ffffff" stroke="#1a2733" stroke-width="1.5"/>
+  <text x="771" y="292" font-size="13.5" font-weight="bold" fill="#1a2733">/crear-subagente</text>
+  <text x="771" y="310" font-size="11.5" fill="#6b7c8a">Delega el trabajo pesado</text>
+  <text x="771" y="326" font-size="11.5" fill="#6b7c8a">sin llenar el contexto</text>
+
+  <rect x="757" y="348" width="185" height="144" rx="7" fill="#fbfdfe" stroke="#c9dae6" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="771" y="374" font-size="12" font-weight="bold" fill="#1a2733">El bucle:</text>
+  <text x="771" y="396" font-size="11.5" fill="#6b7c8a">cada cliente nuevo deja</text>
+  <text x="771" y="412" font-size="11.5" fill="#6b7c8a">una skill nueva.</text>
+  <text x="771" y="436" font-size="11.5" fill="#6b7c8a">Con la plantilla y las</text>
+  <text x="771" y="452" font-size="11.5" fill="#6b7c8a">skills, el quinto cliente</text>
+  <text x="771" y="468" font-size="11.5" fill="#6b7c8a">toma una fraccion del primero.</text>
+
+  <!-- flechas entre fases -->
+  <path d="M 259 332 L 269 332" stroke="#1e5f8a" stroke-width="2"/>
+  <path d="M 492 332 L 502 332" stroke="#1e5f8a" stroke-width="2"/>
+  <path d="M 725 332 L 735 332" stroke="#1e5f8a" stroke-width="2"/>
+
+  <text x="40" y="588" font-size="12" fill="#6b7c8a">Cada skill es una carpeta con un archivo SKILL.md. Se copian a .claude/skills/ del proyecto y se invocan escribiendo /nombre-de-la-skill.</text>
+  <text x="40" y="606" font-size="12" fill="#6b7c8a">Las cuatro fases se recorren una sola vez por cliente. La fase 4 es la que hace que el segundo cliente cueste la mitad de trabajo que el primero.</text>
+</svg>
+
+</div></section>
+
+<section><div class="wrap">
+  <h2>Tu semana 1</h2>
+  <p class="sub">Marca cada dia. Se guarda mientras la pestana este abierta.</p>
+  
+  <label class="dia">
+    <input type="checkbox" data-d="0">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 1</b> — Cuentas creadas: Supabase, GitHub y Vercel. Node y Claude Code instalados. <code>/setup-cuentas</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="1">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 2</b> — La entrevista respondida y el CLAUDE.md del proyecto escrito con reglas numeradas. <code>/sistema-de-citas</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="2">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 3</b> — Base de datos, pagina publica de reserva y panel privado. Una reserva real hecha por ti. <code>/sistema-de-citas</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="3">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 4</b> — Revision de seguridad pasada y el proyecto publicado con URL real. <code>/seguridad-web + /publicar-online</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="4">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 5</b> — 30 negocios calificados en tu lista con la checklist de 8 senales. <code>/conseguir-clientes</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="5">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 6</b> — 5 demos clonadas y personalizadas + 5 videos Loom de 2 minutos grabados. <code>/conseguir-clientes</code></span>
+  </label>
+  <label class="dia">
+    <input type="checkbox" data-d="6">
+    <span class="marca"></span>
+    <span class="dtxt"><b>Dia 7</b> — Los 5 mensajes enviados con su demo. Seguimiento agendado. Cuando alguno responda, ahi entra <code>/cerrar-venta</code>. <code>/conseguir-clientes</code></span>
+  </label>
+  <div class="aviso" style="margin-top:20px">
+    <h3>La trampa del dia 3</h3>
+    <p style="margin:0;font-size:14.5px;color:#4a5c6a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga. Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado le gana a uno perfecto guardado.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Las guias</h2>
+  <p class="sub">Para leer, no para ejecutar. Las skills hacen; las guias explican por que.</p>
+  <div class="guias">
+  <a class="guia" href="recursos/00-glosario.md">
+    <h4>Glosario</h4>
+    <p>Que es cada cosa, explicado sin tecnicismos. Empieza aqui si palabras como repositorio, variable de entorno o RLS te suenan a otro idioma.</p>
+    <span class="fn">recursos/00-glosario.md</span>
+  </a>
+  <a class="guia" href="recursos/01-guia-prospeccion.md">
+    <h4>Como conseguir tus primeros 3 clientes</h4>
+    <p>El embudo con numeros, 8 senales de calificacion, donde buscar en Instagram y Maps, el guion del Loom, 6 plantillas de primer mensaje y el plan de 7 dias.</p>
+    <span class="fn">recursos/01-guia-prospeccion.md</span>
+  </a>
+  <a class="guia" href="recursos/02-guia-venta-cierre.md">
+    <h4>Como vender y cobrar tu primer sistema</h4>
+    <p>La calculadora del dolor, la llamada de 20 minutos, los 3 paquetes, 12 objeciones respondidas palabra por palabra, terminos por escrito y la tabla de margenes reales.</p>
+    <span class="fn">recursos/02-guia-venta-cierre.md</span>
+  </a>
+  <a class="guia" href="recursos/03-manual-prompts-agentes.md">
+    <h4>Manual de prompts, agentes y ahorro de tokens</h4>
+    <p>El recurso tecnico. Anatomia de un prompt que no falla, el CLAUDE.md como cerebro, formato real de skills y subagentes, 15+ tacticas de ahorro y 20 prompts listos.</p>
+    <span class="fn">recursos/03-manual-prompts-agentes.md</span>
+  </a></div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Los numeros</h2>
+  <p class="sub">Precios de Vercel y Supabase verificados en julio de 2026. Verificalos antes de cotizar: cambian.</p>
+  <svg class="fig" viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1000" height="660" fill="#ffffff"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">El modelo economico, con costos reales</text>
+  <text x="40" y="72" font-size="14" fill="#6b7c8a">Precios de Vercel y Supabase verificados en julio de 2026. Verificalos antes de cotizar: cambian.</text>
+  <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
+
+  <!-- Costos -->
+  <text x="40" y="124" font-size="17" font-weight="bold" fill="#1a2733">Lo que cuesta de verdad tener un cliente en produccion</text>
+
+  <rect x="40" y="140" width="450" height="180" rx="8" fill="#fdf6f4" stroke="#e6c4bc" stroke-width="1.5"/>
+  <text x="62" y="168" font-size="14" font-weight="bold" fill="#a8503c">Lo que NO sirve para un cliente que paga</text>
+  <text x="62" y="196" font-size="12.5" fill="#4a5c6a">Vercel Hobby — gratis, pero la licencia NO permite</text>
+  <text x="62" y="214" font-size="12.5" fill="#4a5c6a">uso comercial. El sitio de un cliente no puede vivir ahi.</text>
+  <text x="62" y="242" font-size="12.5" fill="#4a5c6a">Supabase Free — 500 MB, 5 GB de egress, 2 proyectos,</text>
+  <text x="62" y="260" font-size="12.5" fill="#4a5c6a">y el proyecto se PAUSA tras 1 semana sin actividad.</text>
+  <text x="62" y="278" font-size="12.5" fill="#4a5c6a">Un puente festivo apaga la agenda del negocio.</text>
+  <text x="62" y="304" font-size="12.5" font-style="italic" fill="#a8503c">Sirven para practicar y para la demo. Nada mas.</text>
+
+  <rect x="510" y="140" width="450" height="180" rx="8" fill="#f2f9f5" stroke="#b4dcc2" stroke-width="1.5"/>
+  <text x="532" y="168" font-size="14" font-weight="bold" fill="#2f8f6b">Lo que si sirve</text>
+  <text x="532" y="196" font-size="12.5" fill="#4a5c6a">Vercel Pro — 20 USD/mes por asiento, 1 TB de transferencia.</text>
+  <text x="532" y="214" font-size="12.5" fill="#4a5c6a">Un solo asiento aloja todos tus proyectos de clientes.</text>
+  <text x="532" y="242" font-size="12.5" fill="#4a5c6a">Supabase Pro — 25 USD/mes el primer proyecto, 8 GB,</text>
+  <text x="532" y="260" font-size="12.5" fill="#4a5c6a">250 GB de egress, nunca se pausa.</text>
+  <text x="532" y="278" font-size="12.5" fill="#4a5c6a">Proyectos adicionales desde 10 USD/mes.</text>
+  <text x="532" y="304" font-size="12.5" font-style="italic" fill="#2f8f6b">Ahi esta el truco: el segundo cliente cuesta 10, no 45.</text>
+
+  <!-- Tabla -->
+  <text x="40" y="360" font-size="17" font-weight="bold" fill="#1a2733">Margen a mensualidad de 150 USD por cliente</text>
+  <text x="40" y="380" font-size="12" fill="#6b7c8a">Supuestos: Vercel Pro 20 fijo. Supabase 25 el primero + 10 cada adicional. Reserva de 5 por cliente para dominio, correo y sobrecostos.</text>
+
+  <rect x="40" y="394" width="920" height="34" fill="#1e5f8a"/>
+  <text x="70" y="416" font-size="13" font-weight="bold" fill="#ffffff">Clientes</text>
+  <text x="210" y="416" font-size="13" font-weight="bold" fill="#ffffff">Ingreso/mes</text>
+  <text x="380" y="416" font-size="13" font-weight="bold" fill="#ffffff">Costo total</text>
+  <text x="550" y="416" font-size="13" font-weight="bold" fill="#ffffff">Costo por cliente</text>
+  <text x="760" y="416" font-size="13" font-weight="bold" fill="#ffffff">Te queda</text>
+  <text x="890" y="416" font-size="13" font-weight="bold" fill="#ffffff">Margen</text>
+
+  <rect x="40" y="428" width="920" height="34" fill="#f7fafc"/>
+  <text x="70" y="450" font-size="13" fill="#1a2733">1</text>
+  <text x="210" y="450" font-size="13" fill="#1a2733">150 USD</text>
+  <text x="380" y="450" font-size="13" fill="#1a2733">50 USD</text>
+  <text x="550" y="450" font-size="13" fill="#1a2733">50,00 USD</text>
+  <text x="760" y="450" font-size="13" fill="#1a2733">100 USD</text>
+  <text x="890" y="450" font-size="13" font-weight="bold" fill="#c9862a">67%</text>
+
+  <rect x="40" y="462" width="920" height="34" fill="#ffffff"/>
+  <text x="70" y="484" font-size="13" fill="#1a2733">3</text>
+  <text x="210" y="484" font-size="13" fill="#1a2733">450 USD</text>
+  <text x="380" y="484" font-size="13" fill="#1a2733">80 USD</text>
+  <text x="550" y="484" font-size="13" fill="#1a2733">26,67 USD</text>
+  <text x="760" y="484" font-size="13" fill="#1a2733">370 USD</text>
+  <text x="890" y="484" font-size="13" font-weight="bold" fill="#2f8f6b">82%</text>
+
+  <rect x="40" y="496" width="920" height="34" fill="#f7fafc"/>
+  <text x="70" y="518" font-size="13" fill="#1a2733">5</text>
+  <text x="210" y="518" font-size="13" fill="#1a2733">750 USD</text>
+  <text x="380" y="518" font-size="13" fill="#1a2733">110 USD</text>
+  <text x="550" y="518" font-size="13" fill="#1a2733">22,00 USD</text>
+  <text x="760" y="518" font-size="13" fill="#1a2733">640 USD</text>
+  <text x="890" y="518" font-size="13" font-weight="bold" fill="#2f8f6b">85%</text>
+
+  <rect x="40" y="530" width="920" height="34" fill="#ffffff"/>
+  <text x="70" y="552" font-size="13" fill="#1a2733">10</text>
+  <text x="210" y="552" font-size="13" fill="#1a2733">1.500 USD</text>
+  <text x="380" y="552" font-size="13" fill="#1a2733">185 USD</text>
+  <text x="550" y="552" font-size="13" fill="#1a2733">18,50 USD</text>
+  <text x="760" y="552" font-size="13" fill="#1a2733">1.315 USD</text>
+  <text x="890" y="552" font-size="13" font-weight="bold" fill="#2f8f6b">88%</text>
+  <rect x="40" y="394" width="920" height="170" fill="none" stroke="#dbe5ec" stroke-width="1.5"/>
+
+  <rect x="40" y="586" width="920" height="56" rx="8" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
+  <text x="62" y="610" font-size="13.5" font-weight="bold" fill="#1a2733">Lo que este cuadro no incluye, y sale de tu bolsillo: tu suscripcion de Claude Code, impuestos, comision de la pasarela y tu tiempo de soporte.</text>
+  <text x="62" y="632" font-size="13.5" fill="#4a5c6a">Por eso se planea con 65 a 75 por ciento de margen y no con 88. La diferencia es el colchon del cliente que escribe todos los martes.</text>
+</svg>
+
+  <svg class="fig" viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1000" height="640" fill="#ffffff"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">El embudo: cuantos toques para el primer cliente</text>
+  <text x="40" y="72" font-size="14" fill="#6b7c8a">Rangos de expectativa de trabajo, no estadisticas de estudio. Ajustalos con tus propios numeros despues de 30 mensajes enviados.</text>
+  <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
+
+  <text x="40" y="126" font-size="16" font-weight="bold" fill="#1a2733">Sin demo: mensaje generico en frio</text>
+
+  <polygon points="40,146 560,146 505,196 95,196" fill="#c9dae6"/>
+  <text x="300" y="177" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">100 negocios contactados</text>
+  <polygon points="98,202 502,202 460,252 140,252" fill="#a8c6d8"/>
+  <text x="300" y="233" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">8 a 15 responden algo</text>
+  <polygon points="143,258 457,258 425,308 175,308" fill="#7fabc4"/>
+  <text x="300" y="289" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3 a 6 aceptan hablar</text>
+  <polygon points="178,314 422,314 400,364 200,364" fill="#4d84a8"/>
+  <text x="300" y="345" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1 a 2 llegan a propuesta</text>
+  <rect x="245" y="370" width="110" height="46" rx="6" fill="#1e5f8a"/>
+  <text x="300" y="399" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">0 a 1 cierra</text>
+
+  <text x="540" y="126" font-size="16" font-weight="bold" fill="#1a2733">Con demo personalizada y video de 2 minutos</text>
+
+  <polygon points="540,146 960,146 918,196 582,196" fill="#dcecdf"/>
+  <text x="750" y="177" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">30 negocios calificados</text>
+  <polygon points="585,202 915,202 880,252 620,252" fill="#b4dcc2"/>
+  <text x="750" y="233" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">15 a 21 abren el link</text>
+  <polygon points="623,258 877,258 850,308 650,308" fill="#7fc2a0"/>
+  <text x="750" y="289" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">8 a 12 responden algo</text>
+  <polygon points="653,314 847,314 828,364 672,364" fill="#4aa27c"/>
+  <text x="750" y="345" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3 a 5 llegan a propuesta</text>
+  <rect x="695" y="370" width="110" height="46" rx="6" fill="#2f8f6b"/>
+  <text x="750" y="399" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1 a 2 cierran</text>
+
+  <rect x="40" y="444" width="920" height="94" rx="8" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="62" y="474" font-size="15" font-weight="bold" fill="#1e5f8a">Lo que cambia el embudo no es el volumen: es la demo.</text>
+  <text x="62" y="500" font-size="13.5" fill="#4a5c6a">Treinta mensajes con una plataforma ya construida a nombre del negocio superan a cien mensajes genericos, y toman menos tiempo total.</text>
+  <text x="62" y="522" font-size="13.5" fill="#4a5c6a">Con el proyecto base listo, personalizar una demo toma 25 minutos. Ese es el unico trabajo extra, y es el que compra la respuesta.</text>
+
+  <rect x="40" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
+  <text x="60" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 1</text>
+  <text x="60" y="602" font-size="12.5" fill="#6b7c8a">30 prospectos calificados en la lista</text>
+
+  <rect x="351" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
+  <text x="371" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 2</text>
+  <text x="371" y="602" font-size="12.5" fill="#6b7c8a">10 demos enviadas con video</text>
+
+  <rect x="662" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
+  <text x="682" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 3</text>
+  <text x="682" y="602" font-size="12.5" fill="#6b7c8a">3 llamadas de diagnostico agendadas</text>
+</svg>
+
+  <svg class="fig" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <rect width="1000" height="560" fill="#ffffff"/>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">De cero a la primera propuesta enviada en 7 dias</text>
+  <text x="40" y="72" font-size="14" fill="#6b7c8a">Dos a tres horas al dia. La skill que usas en cada dia esta marcada abajo de cada bloque.</text>
+  <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
+
+  <line x1="76" y1="180" x2="924" y2="180" stroke="#c9dae6" stroke-width="4"/>
+
+  <circle cx="100" cy="180" r="22" fill="#1e5f8a"/>
+  <text x="100" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <circle cx="237" cy="180" r="22" fill="#1e5f8a"/>
+  <text x="237" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <circle cx="374" cy="180" r="22" fill="#1e5f8a"/>
+  <text x="374" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+  <circle cx="511" cy="180" r="22" fill="#2f8f6b"/>
+  <text x="511" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  <circle cx="648" cy="180" r="22" fill="#c9862a"/>
+  <text x="648" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+  <circle cx="785" cy="180" r="22" fill="#c9862a"/>
+  <text x="785" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+  <circle cx="922" cy="180" r="22" fill="#1a2733"/>
+  <text x="922" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">7</text>
+
+  <text x="100" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Cuentas</text>
+  <text x="237" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">El cerebro</text>
+  <text x="374" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Construir</text>
+  <text x="511" y="140" font-size="13" font-weight="bold" fill="#2f8f6b" text-anchor="middle">Blindar</text>
+  <text x="648" y="140" font-size="13" font-weight="bold" fill="#c9862a" text-anchor="middle">La lista</text>
+  <text x="785" y="140" font-size="13" font-weight="bold" fill="#c9862a" text-anchor="middle">Las demos</text>
+  <text x="922" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Enviar</text>
+
+  <rect x="42" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="56" y="246" font-size="11.5" fill="#4a5c6a">Supabase, GitHub</text>
+  <text x="56" y="264" font-size="11.5" fill="#4a5c6a">y Vercel creados.</text>
+  <text x="56" y="288" font-size="11.5" fill="#4a5c6a">Node y Claude</text>
+  <text x="56" y="306" font-size="11.5" fill="#4a5c6a">Code instalados.</text>
+  <text x="56" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/setup-cuentas</text>
+  <text x="56" y="356" font-size="10.5" fill="#6b7c8a">Meta: 3 cuentas</text>
+
+  <rect x="179" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="193" y="246" font-size="11.5" fill="#4a5c6a">La entrevista y</text>
+  <text x="193" y="264" font-size="11.5" fill="#4a5c6a">el CLAUDE.md</text>
+  <text x="193" y="282" font-size="11.5" fill="#4a5c6a">del proyecto.</text>
+  <text x="193" y="306" font-size="11.5" fill="#4a5c6a">Reglas numeradas.</text>
+  <text x="193" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
+  <text x="193" y="356" font-size="10.5" fill="#6b7c8a">Meta: 1 archivo</text>
+
+  <rect x="316" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="330" y="246" font-size="11.5" fill="#4a5c6a">Base de datos,</text>
+  <text x="330" y="264" font-size="11.5" fill="#4a5c6a">reserva publica</text>
+  <text x="330" y="282" font-size="11.5" fill="#4a5c6a">y panel privado.</text>
+  <text x="330" y="306" font-size="11.5" fill="#4a5c6a">Por etapas.</text>
+  <text x="330" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
+  <text x="330" y="356" font-size="10.5" fill="#6b7c8a">Meta: reserva real</text>
+
+  <rect x="453" y="220" width="116" height="150" rx="7" fill="#f2f9f5" stroke="#b4dcc2" stroke-width="1.5"/>
+  <text x="467" y="246" font-size="11.5" fill="#4a5c6a">Revision de</text>
+  <text x="467" y="264" font-size="11.5" fill="#4a5c6a">seguridad y</text>
+  <text x="467" y="282" font-size="11.5" fill="#4a5c6a">publicacion con</text>
+  <text x="467" y="300" font-size="11.5" fill="#4a5c6a">URL real.</text>
+  <text x="467" y="330" font-size="11" font-weight="bold" fill="#2f8f6b">/seguridad-web</text>
+  <text x="467" y="346" font-size="11" font-weight="bold" fill="#2f8f6b">/publicar-online</text>
+  <text x="467" y="364" font-size="10.5" fill="#6b7c8a">Meta: link vivo</text>
+
+  <rect x="590" y="220" width="116" height="150" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
+  <text x="604" y="246" font-size="11.5" fill="#4a5c6a">30 negocios</text>
+  <text x="604" y="264" font-size="11.5" fill="#4a5c6a">calificados con</text>
+  <text x="604" y="282" font-size="11.5" fill="#4a5c6a">la checklist de</text>
+  <text x="604" y="300" font-size="11.5" fill="#4a5c6a">8 senales.</text>
+  <text x="604" y="336" font-size="11" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
+  <text x="604" y="356" font-size="10.5" fill="#6b7c8a">Meta: 30 filas</text>
+
+  <rect x="727" y="220" width="116" height="150" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
+  <text x="741" y="246" font-size="11.5" fill="#4a5c6a">5 demos clonadas</text>
+  <text x="741" y="264" font-size="11.5" fill="#4a5c6a">y personalizadas.</text>
+  <text x="741" y="288" font-size="11.5" fill="#4a5c6a">5 videos Loom</text>
+  <text x="741" y="306" font-size="11.5" fill="#4a5c6a">de 2 minutos.</text>
+  <text x="741" y="336" font-size="11" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
+  <text x="741" y="356" font-size="10.5" fill="#6b7c8a">Meta: 5 videos</text>
+
+  <rect x="864" y="220" width="116" height="150" rx="7" fill="#f7f9fa" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="878" y="246" font-size="11.5" fill="#4a5c6a">Enviar los 5</text>
+  <text x="878" y="264" font-size="11.5" fill="#4a5c6a">mensajes con su</text>
+  <text x="878" y="282" font-size="11.5" fill="#4a5c6a">demo. Agendar</text>
+  <text x="878" y="300" font-size="11.5" fill="#4a5c6a">el seguimiento.</text>
+  <text x="878" y="336" font-size="11" font-weight="bold" fill="#1a2733">/conseguir-clientes</text>
+  <text x="878" y="356" font-size="10.5" fill="#6b7c8a">Meta: 5 enviados</text>
+
+  <rect x="40" y="400" width="920" height="60" rx="8" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
+  <text x="62" y="426" font-size="14" font-weight="bold" fill="#1e5f8a">La trampa del dia 3.</text>
+  <text x="205" y="426" font-size="13.5" fill="#4a5c6a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga.</text>
+  <text x="62" y="448" font-size="13.5" fill="#4a5c6a">Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado vence a uno perfecto guardado.</text>
+
+  <rect x="40" y="478" width="920" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
+  <text x="62" y="504" font-size="14" font-weight="bold" fill="#1a2733">Dia 8 en adelante.</text>
+  <text x="205" y="504" font-size="13.5" fill="#4a5c6a">Cinco toques de seguimiento en 14 dias, y 5 demos nuevas cada semana. El primer cierre suele caer entre la semana 3 y la 6.</text>
+  <text x="62" y="526" font-size="13.5" fill="#4a5c6a">Cuando cierres el primero: /entregar-al-cliente. Cuando notes que repites algo por tercera vez: /crear-skill. Ese es el bucle.</text>
+</svg>
+
+  <svg class="fig" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e5f8a"/>
+    </marker>
+    <marker id="flechaGris" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8aa3b5"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="800" height="500" fill="#ffffff"/>
+  <text x="400" y="38" text-anchor="middle" font-size="22" font-weight="bold" fill="#12344d">Cómo se conecta todo el sistema</text>
+  <text x="400" y="60" text-anchor="middle" font-size="13" fill="#5b7386">Sistema de citas para negocios locales — Claude Code · Supabase · Vercel</text>
+
+  <!-- Fila principal: el sistema funcionando -->
+  <!-- Paciente -->
+  <rect x="40" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <text x="125" y="152" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">El cliente final</text>
+  <text x="125" y="172" text-anchor="middle" font-size="12" fill="#3d566b">Agenda desde su celular</text>
+  <text x="125" y="189" text-anchor="middle" font-size="12" fill="#3d566b">a cualquier hora</text>
+
+  <!-- Página en Vercel -->
+  <rect x="300" y="120" width="200" height="90" rx="14" fill="#1e5f8a"/>
+  <text x="400" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Página de reservas</text>
+  <text x="400" y="170" text-anchor="middle" font-size="12" fill="#cfe3f2">publicada en Vercel</text>
+  <text x="400" y="188" text-anchor="middle" font-size="12" fill="#cfe3f2">valida horarios y reglas</text>
+
+  <!-- Supabase -->
+  <rect x="590" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <text x="675" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">Base de datos</text>
+  <text x="675" y="170" text-anchor="middle" font-size="12" fill="#3d566b">Supabase</text>
+  <text x="675" y="188" text-anchor="middle" font-size="12" fill="#3d566b">citas y bloqueos, con RLS</text>
+
+  <!-- Panel -->
+  <rect x="590" y="280" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <text x="675" y="310" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">Panel del negocio</text>
+  <text x="675" y="330" text-anchor="middle" font-size="12" fill="#3d566b">ve y atiende sus citas,</text>
+  <text x="675" y="348" text-anchor="middle" font-size="12" fill="#3d566b">bloquea horarios · con clave</text>
+
+  <!-- Flechas fila principal -->
+  <line x1="210" y1="165" x2="295" y2="165" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="252" y="155" text-anchor="middle" font-size="11" fill="#1e5f8a">reserva</text>
+
+  <line x1="500" y1="150" x2="585" y2="150" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="542" y="140" text-anchor="middle" font-size="11" fill="#1e5f8a">guarda la cita</text>
+  <line x1="585" y1="180" x2="500" y2="180" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="542" y="199" text-anchor="middle" font-size="11" fill="#1e5f8a">horarios libres</text>
+
+  <line x1="675" y1="210" x2="675" y2="275" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
+
+  <!-- Fila inferior: cómo se construye -->
+  <text x="40" y="310" font-size="13" font-weight="bold" fill="#8aa3b5">CÓMO SE CONSTRUYE Y PUBLICA</text>
+
+  <rect x="40" y="330" width="190" height="90" rx="14" fill="#f4f7f9" stroke="#8aa3b5" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="135" y="360" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">Claude Code</text>
+  <text x="135" y="380" text-anchor="middle" font-size="12" fill="#3d566b">construye el sistema</text>
+  <text x="135" y="398" text-anchor="middle" font-size="12" fill="#3d566b">siguiendo CLAUDE.md y skills</text>
+
+  <rect x="310" y="330" width="180" height="90" rx="14" fill="#f4f7f9" stroke="#8aa3b5" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="400" y="360" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">GitHub</text>
+  <text x="400" y="380" text-anchor="middle" font-size="12" fill="#3d566b">guarda el código</text>
+  <text x="400" y="398" text-anchor="middle" font-size="12" fill="#3d566b">con su historial</text>
+
+  <line x1="230" y1="375" x2="305" y2="375" stroke="#8aa3b5" stroke-width="2.5" marker-end="url(#flechaGris)"/>
+  <text x="267" y="365" text-anchor="middle" font-size="11" fill="#5b7386">sube</text>
+
+  <path d="M 490 360 Q 540 300 398 213" fill="none" stroke="#8aa3b5" stroke-width="2.5" marker-end="url(#flechaGris)"/>
+  <text x="530" y="290" text-anchor="middle" font-size="11" fill="#5b7386">Vercel publica</text>
+
+  <!-- Nota de llaves -->
+  <rect x="40" y="445" width="720" height="38" rx="10" fill="#fdf3e7" stroke="#d9a95e" stroke-width="1.5"/>
+  <text x="400" y="469" text-anchor="middle" font-size="12.5" fill="#7a5a25"> Las llaves (API keys) viven solo en .env.local y en las variables de entorno de Vercel — nunca en el código, nunca en pantalla.</text>
+</svg>
+
+</div></section>
+
+<section><div class="wrap">
+  <div class="aviso">
+    <h3>Antes de usar esto con un cliente real</h3>
+    <ul>
+      <li><b>Verifica los precios.</b> Vercel y Supabase cambian sus planes. Los de este paquete son de julio de 2026.</li>
+      <li><b>Vercel Hobby no permite uso comercial.</b> El sitio de un cliente que paga va en Vercel Pro. Sin excepciones.</li>
+      <li><b>Supabase Free pausa el proyecto tras una semana sin actividad.</b> Sirve para practicar y para la demo. Nunca para produccion.</li>
+      <li><b>Los rangos del embudo son expectativas de trabajo</b>, no estadisticas de un estudio. Reemplazalos con tus propios numeros despues de 30 mensajes enviados.</li>
+      <li><b>El modelo de precios es un modelo de mercado</b>, no una promesa de ingresos.</li>
+      <li><b>Los terminos contractuales y tributarios varian por pais.</b> Revisa los tuyos con un contador o abogado local antes de firmar.</li>
+      <li><b>Corre siempre <code>/seguridad-web</code></b> antes de entregar, publicar o grabar pantalla.</li>
+    </ul>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Dasvo IA Builders — arsenal del video. Panel generado desde el contenido real del paquete: los nombres, lineas y frases de activacion salen de los archivos SKILL.md.</div></footer>
+
+<script>
+var q=document.getElementById('q'),cards=[].slice.call(document.querySelectorAll('.card')),f=0;
+function apply(){
+  var t=q.value.trim().toLowerCase(),n=0;
+  cards.forEach(function(c){
+    var ok=(f===0||+c.dataset.fase===f)&&(!t||c.dataset.txt.indexOf(t)>-1);
+    c.classList.toggle('hide',!ok); if(ok)n++;
+  });
+  document.getElementById('vacio').style.display=n?'none':'block';
+}
+q.addEventListener('input',apply);
+[].slice.call(document.querySelectorAll('.fbtn')).forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on'); f=+b.dataset.f; apply();
+  });
+});
+</script>
+</body></html>
