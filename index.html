@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Biblioteca de recursos gratuitos — Dasvo IA Builders</title>
+<meta name="description" content="Todos los recursos de cada video de Dasvo IA Builders: 13 herramientas de Claude Code, guías en PDF y plantillas para construir y vender plataformas de agendamiento a negocios locales. Gratis y sin registro.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://dasvo-recursos.vercel.app/">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dasvo-recursos.vercel.app/">
+<meta property="og:title" content="Biblioteca de recursos gratuitos — Dasvo IA Builders">
+<meta property="og:description" content="13 herramientas de Claude Code, 4 guías en PDF y las plantillas. Todo lo de cada video, gratis y sin registro.">
+<meta property="og:image" content="https://dasvo-recursos.vercel.app/img/compartir.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_CO">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="img/icono.png" sizes="any">
+<link rel="apple-touch-icon" href="img/icono.png">
+
+<style>
+/* ============================================================
+   TOKENS — todos los valores viven aquí, no se escriben sueltos
+   Contraste verificado contra WCAG 2.1 AA
+   ============================================================ */
+:root{
+  /* color: texto */
+  --tx-fuerte:#0d1a23;   /* 17.4:1 sobre blanco */
+  --tx-cuerpo:#39485a;   /* 9.1:1  */
+  --tx-suave:#566673;    /* 5.9:1  — antes 6b7c8a fallaba con 4.3:1 */
+  --tx-invertido:#ffffff;
+
+  /* color: marca */
+  --azul:#1a5479;        /* 8.1:1 sobre blanco */
+  --azul-vivo:#1e5f8a;
+  --azul-claro:#7fc2e8;
+  --azul-noche:#0b2c42;
+  --verde:#217a58;       /* 5.3:1 — antes 2f8f6b fallaba con 4.0:1 */
+  --ambar:#8a5a12;       /* 5.9:1 — antes c9862a fallaba */
+  --violeta:#5b41a0;     /* 7.4:1 */
+
+  /* color: superficie */
+  --sup:#ffffff;
+  --sup-2:#f4f8fb;
+  --sup-3:#e9f1f6;
+  --borde:#d3e0e9;       /* 1.6:1 decorativo */
+  --borde-ui:#8596a1;    /* 3.05:1 verificado — bordes de campos */
+
+  /* espaciado */
+  --e1:4px; --e2:8px; --e3:12px; --e4:16px; --e5:24px;
+  --e6:32px; --e7:48px; --e8:64px; --e9:96px;
+
+  /* radio */
+  --r1:6px; --r2:10px; --r3:16px; --r4:999px;
+
+  /* elevacion */
+  --sombra-1:0 1px 2px rgba(13,26,35,.06);
+  --sombra-2:0 4px 16px rgba(13,26,35,.09);
+  --sombra-3:0 14px 40px rgba(13,26,35,.16);
+
+  /* movimiento */
+  --rapido:.14s cubic-bezier(.4,0,.2,1);
+  --medio:.24s cubic-bezier(.4,0,.2,1);
+
+  --ancho:940px;
+}
+
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{
+  font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  color:var(--tx-cuerpo);background:var(--sup);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:var(--ancho);margin:0 auto;padding:0 var(--e5)}
+
+/* foco visible: sin esto la pagina es inusable con teclado */
+:where(a,button,summary,[tabindex]):focus-visible{
+  outline:3px solid var(--azul-vivo);outline-offset:3px;border-radius:var(--r1);
+}
+
+.saltar{
+  position:absolute;left:var(--e4);top:-100px;z-index:100;
+  background:var(--azul);color:#fff;padding:var(--e3) var(--e5);
+  border-radius:var(--r2);text-decoration:none;font-weight:600;
+  transition:top var(--rapido);
+}
+.saltar:focus{top:var(--e4)}
+
+/* ---------- barra fija ---------- */
+.barra{
+  position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(12px);
+  -webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--borde);
+}
+.barra-in{display:flex;align-items:center;gap:var(--e5);
+  max-width:var(--ancho);margin:0 auto;padding:var(--e3) var(--e5);min-height:56px}
+.logo{display:flex;align-items:center;gap:var(--e2);text-decoration:none;min-height:44px;
+  color:var(--tx-fuerte);font-weight:800;font-size:14.5px;letter-spacing:-.2px;flex:0 0 auto}
+.logo-marca{width:26px;height:26px;border-radius:7px;flex:0 0 auto;
+  background:linear-gradient(140deg,var(--azul-noche),var(--azul-vivo) 60%,var(--azul-claro));
+  display:flex;align-items:center;justify-content:center}
+.logo-marca span{width:11px;height:11px;border-radius:2px;
+  background:linear-gradient(140deg,#fff,rgba(255,255,255,.6))}
+.barra nav{margin-left:auto;display:flex;gap:var(--e1)}
+.barra nav a{
+  color:var(--tx-suave);text-decoration:none;font-size:14px;font-weight:500;
+  padding:var(--e2) var(--e3);border-radius:var(--r1);transition:var(--rapido);
+  min-height:44px;display:flex;align-items:center;
+}
+.barra nav a:hover{color:var(--azul);background:var(--sup-2)}
+@media(max-width:760px){.barra nav a[data-opcional]{display:none}}
+
+/* ---------- portada ---------- */
+.hero{
+  position:relative;overflow:hidden;color:var(--tx-cuerpo);
+  padding:var(--e9) 0 var(--e8);
+  border-bottom:1px solid var(--borde);
+  background:
+    radial-gradient(900px 460px at 82% -18%, rgba(127,194,232,.34), transparent 64%),
+    radial-gradient(700px 380px at 6% 108%, rgba(26,84,121,.09), transparent 62%),
+    linear-gradient(168deg,#ffffff 0%,#f6fafd 46%,#eaf3f9 100%);
+}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.20}
+.hero-in{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:var(--e2);
+  font-size:11.5px;font-weight:800;letter-spacing:2.6px;color:var(--azul);
+  background:rgba(26,84,121,.09);border:1px solid rgba(26,84,121,.20);
+  padding:6px 13px;border-radius:var(--r4)}
+.hero h1{
+  font-size:clamp(30px,5.4vw,50px);line-height:1.08;letter-spacing:-1.4px;
+  margin:var(--e5) 0 var(--e4);max-width:16ch;font-weight:800;color:var(--tx-fuerte);
+}
+.hero .bajada{font-size:clamp(16px,2.2vw,19px);line-height:1.55;
+  max-width:54ch;color:var(--tx-cuerpo)}
+.hero-datos{display:flex;flex-wrap:wrap;gap:var(--e2) var(--e5);margin-top:var(--e6)}
+.dato{display:flex;align-items:baseline;gap:7px;font-size:14px;color:var(--tx-suave)}
+.dato b{font-size:22px;font-weight:800;color:var(--azul);letter-spacing:-.5px}
+
+/* ---------- instalar ---------- */
+.instalar{background:var(--sup-2);border-bottom:1px solid var(--borde);padding:var(--e8) 0}
+.cabecera{margin-bottom:var(--e6);max-width:62ch}
+.cabecera h2{font-size:clamp(23px,3.4vw,30px);letter-spacing:-.8px;
+  color:var(--tx-fuerte);margin-bottom:var(--e2);font-weight:800}
+.cabecera p{color:var(--tx-suave);font-size:16px}
+
+.previo{display:flex;gap:var(--e3);align-items:flex-start;background:var(--sup);
+  border:1px solid var(--borde);border-left:4px solid var(--ambar);
+  border-radius:var(--r2);padding:var(--e4) var(--e5);margin-bottom:var(--e5);
+  font-size:14.5px;color:var(--tx-cuerpo)}
+.previo b{color:var(--tx-fuerte)}
+
+.pasos{display:grid;gap:var(--e3);grid-template-columns:minmax(0,1fr);counter-reset:p}
+.paso{display:flex;gap:var(--e4);min-width:0;background:var(--sup);
+  border:1px solid var(--borde);border-radius:var(--r2);padding:var(--e4) var(--e5);
+  box-shadow:var(--sombra-1)}
+.num{flex:0 0 30px;height:30px;border-radius:var(--r4);background:var(--azul);
+  color:#fff;font-size:14px;font-weight:800;display:flex;align-items:center;
+  justify-content:center;margin-top:2px}
+.paso-cuerpo{flex:1;min-width:0}
+.paso-txt{font-size:14.5px;color:var(--tx-cuerpo);margin-bottom:var(--e3)}
+.paso-txt b{color:var(--tx-fuerte)}
+.cmd{display:flex;gap:var(--e2);min-width:0;max-width:100%}
+.cmd code{
+  flex:1;min-width:0;max-width:100%;background:#eef4f8;color:#14425e;
+  border:1px solid var(--borde);
+  padding:13px 15px;border-radius:var(--r1);
+  font:600 13.5px/1.45 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;
+}
+.copiar{
+  flex:0 0 auto;min-width:96px;min-height:44px;background:var(--azul);color:#fff;
+  border:0;border-radius:var(--r1);padding:0 var(--e4);font-size:13.5px;
+  font-weight:700;cursor:pointer;transition:background var(--rapido);
+  font-family:inherit;
+}
+.copiar:hover{background:var(--azul-noche)}
+.copiar[data-ok="1"]{background:var(--verde)}
+
+.exito{margin-top:var(--e5);background:var(--sup);border:1px solid var(--borde);
+  border-left:4px solid var(--verde);border-radius:var(--r2);padding:var(--e5)}
+.exito h3{font-size:16.5px;color:var(--tx-fuerte);margin-bottom:var(--e2);font-weight:700}
+.exito p{font-size:14.5px;color:var(--tx-cuerpo)}
+.exito code{background:var(--sup-3);color:var(--tx-fuerte);padding:2px 6px;
+  border-radius:4px;font:13px ui-monospace,Menlo,Consolas,monospace}
+.exito .sig{margin-top:var(--e3);font-size:14.5px}
+
+.auxilio{margin-top:var(--e4);font-size:14px;color:var(--tx-suave)}
+.auxilio a{color:var(--azul);font-weight:600}
+
+/* ---------- secciones ---------- */
+main section{padding:var(--e8) 0;border-top:1px solid var(--borde)}
+main section:first-child{border-top:0}
+
+.video{border:1px solid var(--borde);border-radius:var(--r3);overflow:hidden;
+  margin-bottom:var(--e5);background:var(--sup);box-shadow:var(--sombra-1)}
+.video-portada{width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--sup-3);
+  border-bottom:1px solid var(--borde)}
+.video-cab{background:var(--sup-2);padding:var(--e5);border-bottom:1px solid var(--borde)}
+.chapa{display:inline-block;background:var(--azul);color:#fff;font-size:10.5px;
+  font-weight:800;letter-spacing:1.4px;padding:5px 10px;border-radius:var(--r1);
+  margin-bottom:var(--e3)}
+.video-cab h3{font-size:clamp(18px,2.6vw,21px);letter-spacing:-.4px;line-height:1.3;
+  color:var(--tx-fuerte);margin-bottom:var(--e2);font-weight:700}
+.video-cab p{font-size:14.5px;color:var(--tx-suave)}
+
+.grupo{padding:var(--e5) var(--e5) var(--e2)}
+.grupo h4{font-size:11.5px;font-weight:800;letter-spacing:1.5px;
+  color:var(--tx-suave);text-transform:uppercase}
+.grupo p{font-size:13.5px;color:var(--tx-suave);margin-top:3px}
+.lista{padding:0 var(--e3) var(--e3)}
+
+.rec{display:flex;align-items:center;gap:var(--e3);padding:var(--e3) var(--e4);
+  min-height:56px;text-decoration:none;color:inherit;border-radius:var(--r2);
+  transition:background var(--rapido);position:relative}
+.rec:hover{background:var(--sup-2)}
+.rec:hover .flecha{transform:translateX(3px)}
+.marca-tipo{flex:0 0 34px;height:34px;border-radius:var(--r2);display:flex;
+  align-items:center;justify-content:center;font-size:11px;font-weight:800;
+  letter-spacing:.3px;background:var(--sup-3);color:var(--azul)}
+.marca-tipo.pdf{background:rgba(26,84,121,.11);color:var(--azul)}
+.marca-tipo.web{background:rgba(91,65,160,.12);color:var(--violeta)}
+.marca-tipo.img{background:rgba(91,65,160,.12);color:var(--violeta)}
+.marca-tipo.zip{background:rgba(138,90,18,.13);color:var(--ambar)}
+.marca-tipo.top{background:rgba(26,101,71,.13);color:#1a6547}
+.rec-txt{flex:1;min-width:0}
+.rec-txt b{display:block;font-size:15.5px;font-weight:600;line-height:1.35;
+  color:var(--tx-fuerte)}
+.rec-txt span{display:block;font-size:13.5px;color:var(--tx-suave);margin-top:1px}
+.peso{flex:0 0 auto;font-size:12px;color:var(--tx-suave);font-variant-numeric:tabular-nums}
+.flecha{flex:0 0 auto;color:var(--azul);font-size:19px;font-weight:700;
+  transition:transform var(--rapido);line-height:1}
+
+.paquete{background:linear-gradient(150deg,#f6fafd,#eaf3f9);
+  border:1px solid var(--borde);border-left:5px solid var(--azul);
+  color:var(--tx-cuerpo);border-radius:var(--r3);padding:var(--e6);margin-bottom:var(--e6)}
+.paquete h3{font-size:clamp(19px,2.8vw,23px);margin-bottom:var(--e2);
+  letter-spacing:-.5px;font-weight:800;color:var(--tx-fuerte)}
+.paquete p{font-size:15.5px;color:var(--tx-cuerpo);margin-bottom:var(--e5);max-width:58ch}
+.btn{display:inline-flex;align-items:center;gap:var(--e2);min-height:48px;
+  background:var(--azul);color:#fff;text-decoration:none;font-weight:700;
+  font-size:15.5px;padding:0 var(--e6);border-radius:var(--r2);
+  transition:transform var(--rapido),box-shadow var(--rapido)}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--sombra-3)}
+
+
+/* ---------- video destacado ---------- */
+.video-top{background:var(--sup);padding:var(--e8) 0 0}
+.video-top .cabecera{margin-bottom:var(--e5)}
+.reproductor{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r3);
+  overflow:hidden;border:1px solid var(--borde);box-shadow:var(--sombra-2);
+  background:linear-gradient(150deg,#eaf3f9,#dceaf3);cursor:pointer;display:block;
+  padding:0;font-family:inherit;text-align:left}
+.reproductor img,.reproductor iframe{position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;border:0;display:block}
+.reproductor .capa{position:absolute;inset:0;display:flex;align-items:center;
+  justify-content:center;background:linear-gradient(180deg,rgba(11,44,66,.06),rgba(11,44,66,.24))}
+.play{width:76px;height:76px;border-radius:var(--r4);background:#fff;
+  box-shadow:0 8px 28px rgba(13,26,35,.32);display:flex;align-items:center;
+  justify-content:center;transition:transform var(--medio)}
+.reproductor:hover .play{transform:scale(1.08)}
+.play::after{content:"";width:0;height:0;margin-left:6px;
+  border-left:22px solid var(--azul);border-top:14px solid transparent;
+  border-bottom:14px solid transparent}
+.reproductor .pie-video{position:absolute;left:0;right:0;bottom:0;padding:var(--e5);
+  color:#fff;background:linear-gradient(0deg,rgba(8,34,47,.86),transparent);
+  font-size:15px;font-weight:600}
+.sin-video{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:var(--e2);color:var(--tx-suave);
+  text-align:center;padding:var(--e5)}
+.sin-video b{color:var(--tx-fuerte);font-size:16px}
+.sin-video span{font-size:14px;max-width:44ch}
+
+/* ---------- ayuda ---------- */
+.faq{border:1px solid var(--borde);border-radius:var(--r2);margin-bottom:var(--e2);
+  overflow:hidden;background:var(--sup)}
+.faq summary{padding:var(--e4) var(--e5);min-height:56px;cursor:pointer;
+  font-weight:600;font-size:15.5px;color:var(--tx-fuerte);list-style:none;
+  display:flex;align-items:center;justify-content:space-between;gap:var(--e4)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";flex:0 0 11px;height:11px;border-right:2.5px solid var(--azul);
+  border-bottom:2.5px solid var(--azul);transform:rotate(45deg);
+  transition:transform var(--medio);margin-top:-4px}
+.faq[open] summary::after{transform:rotate(225deg);margin-top:2px}
+.faq summary:hover{background:var(--sup-2)}
+.faq-cuerpo{padding:0 var(--e5) var(--e5);font-size:14.5px;color:var(--tx-cuerpo)}
+.faq-cuerpo code{background:var(--sup-3);color:var(--tx-fuerte);padding:2px 6px;
+  border-radius:4px;font:13px ui-monospace,Menlo,Consolas,monospace}
+
+footer{background:var(--sup-2);border-top:1px solid var(--borde);
+  padding:var(--e7) 0 var(--e6);font-size:14px;color:var(--tx-suave)}
+footer h2{font-size:13px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+  color:var(--tx-suave);margin-bottom:var(--e3)}
+footer p{margin-bottom:var(--e3);max-width:78ch;line-height:1.6}
+footer strong{color:var(--tx-fuerte)}
+.pie{margin-top:var(--e5);padding-top:var(--e4);border-top:1px solid var(--borde);
+  color:var(--tx-fuerte);font-weight:700}
+
+.oculto{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+
+@media(max-width:640px){
+  .hero{padding:var(--e7) 0 var(--e6)}
+  .cmd{flex-direction:column}
+  .cmd code{width:100%}
+  .copiar{width:100%}
+  .paquete{padding:var(--e5)}
+  .btn{width:100%;justify-content:center}
+  .peso{display:none}
+  .rec{padding:var(--e3)}
+}
+</style>
+</head>
+<body>
+
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<div class="barra">
+  <div class="barra-in">
+    <a class="logo" href="#inicio"><span class="logo-marca"><span></span></span>Dasvo IA Builders</a>
+    <nav aria-label="Secciones">
+      
+      <a href="#video">Video</a><a href="#instalar">Instalar</a>
+      <a href="#recursos">Recursos</a>
+      <a href="#ayuda" data-opcional>Ayuda</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero" id="inicio">
+  <img class="hero-img" src="img/portada.jpg" alt="" aria-hidden="true"
+       onerror="this.remove()">
+  <div class="wrap hero-in">
+    <span class="eyebrow">RECURSOS GRATUITOS</span>
+    <h1>Todo lo de cada video, en un solo sitio</h1>
+    <p class="bajada">Las herramientas, las guías y las plantillas que uso para construir plataformas de agendamiento a negocios locales. Gratis, sin registro y sin dejar tu correo.</p>
+    <div class="hero-datos">
+      <span class="dato"><b>13</b> herramientas</span>
+      <span class="dato"><b>94</b> páginas de guías</span>
+      <span class="dato"><b>2</b> minutos para instalarlo</span>
+    </div>
+  </div>
+</header>
+
+<main id="contenido">
+<section class="video-top" id="video">
+  <div class="wrap">
+    <div class="cabecera">
+      <h2>Mira el video primero</h2>
+      <p>Todo lo que sale aquí abajo se explica ahí. Si prefieres ir directo a instalar, baja un poco.</p>
+    </div>
+
+    <!-- ═══════ PARA PONER TU VIDEO ═══════
+         Reemplaza PON-AQUI-EL-ID por el id de tu video de YouTube.
+         El id son los caracteres despues de "v=" en la direccion.
+         Ejemplo: youtube.com/watch?v=dQw4w9WgXcQ  ->  el id es dQw4w9WgXcQ
+         Hay que cambiarlo en DOS sitios de este bloque: data-id y la imagen.
+    ═══════════════════════════════════════ -->
+    <button class="reproductor" type="button" id="repro"
+            data-id="PON-AQUI-EL-ID"
+            aria-label="Reproducir el video">
+      <img src="https://i.ytimg.com/vi/PON-AQUI-EL-ID/maxresdefault.jpg" alt=""
+           loading="lazy" onerror="this.remove()">
+      <span class="capa"><span class="play" aria-hidden="true"></span></span>
+      <span class="pie-video">Cómo crear Plataformas a Medida para negocios locales con Claude Code</span>
+    </button>
+  </div>
+</section>
+
+<section class="instalar" id="instalar">
+  <div class="wrap">
+    <div class="cabecera">
+      <h2>Instala las 13 herramientas</h2>
+      <p>Se pegan tres líneas dentro de Claude Code y ya están en tu computador. No descargas carpetas, no tocas archivos, no programas.</p>
+    </div>
+
+    <p class="previo">
+      <span aria-hidden="true">!</span>
+      <span><b>Antes de empezar necesitas dos cosas:</b> Claude Code instalado, que se descarga en <b>claude.com/code</b>, y una cuenta de pago de Claude (Pro, Max, Team o Enterprise). El plan gratuito no incluye Claude Code, así que con ese no va a funcionar.</span>
+    </p>
+
+    <ol class="pasos">
+      <li class="paso">
+        <span class="num" aria-hidden="true">1</span>
+        <div class="paso-cuerpo">
+          <p class="paso-txt"><b>Dile dónde está la caja de herramientas.</b> Abre Claude Code, pega esta línea y presiona Enter. Debe responderte <i>Successfully added marketplace</i>.</p>
+          <div class="cmd">
+            <code id="c1">/plugin marketplace add Dasvoia/dasvo-ia-builders</code>
+            <button class="copiar" type="button" data-c="c1" aria-label="Copiar el primer comando">Copiar</button>
+          </div>
+        </div>
+      </li>
+      <li class="paso">
+        <span class="num" aria-hidden="true">2</span>
+        <div class="paso-cuerpo">
+          <p class="paso-txt"><b>Ábrela.</b> Cuando te pregunte dónde instalar, escoge <b>user</b>: eso las deja disponibles en todos tus proyectos.</p>
+          <div class="cmd">
+            <code id="c2">/plugin install dasvo@dasvo-ia-builders</code>
+            <button class="copiar" type="button" data-c="c2" aria-label="Copiar el segundo comando">Copiar</button>
+          </div>
+        </div>
+      </li>
+      <li class="paso">
+        <span class="num" aria-hidden="true">3</span>
+        <div class="paso-cuerpo">
+          <p class="paso-txt"><b>Despiértalas.</b> Con esto quedan activas en la sesión que ya tienes abierta.</p>
+          <div class="cmd">
+            <code id="c3">/reload-plugins</code>
+            <button class="copiar" type="button" data-c="c3" aria-label="Copiar el tercer comando">Copiar</button>
+          </div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="exito">
+      <h3>Cómo sabes que quedó bien</h3>
+      <p>Escribe una barra <code>/</code> y se despliega una lista. Deben aparecer trece que empiezan con <b>dasvo</b>. Si aparecen, terminaste la instalación.</p>
+      <p class="sig"><b>Y ahora qué:</b> escribe <code>/dasvo:setup-cuentas</code>. Esa herramienta te lleva de la mano, una instrucción a la vez, a crear las tres cuentas que necesitas. No hagas nada más todavía.</p>
+    </div>
+
+    <p class="auxilio">¿Algo no salió como dice aquí? Está resuelto abajo en <a href="#ayuda">Si algo no funciona</a>.</p>
+  </div>
+</section>
+
+<section id="recursos">
+  <div class="wrap">
+    <div class="cabecera">
+      <h2>Recursos por video</h2>
+      <p>Cada video trae los suyos. Lo más nuevo queda al final de la lista.</p>
+    </div>
+
+    <div class="paquete">
+      <h3>¿Prefieres bajar todo de una vez?</h3>
+      <p>Un solo archivo con las cuatro guías, las plantillas, los gráficos y el panel del arsenal. Lo descargas, lo descomprimes y ahí está todo.</p>
+      <a class="btn" href="descargas/DASVO-todo-el-paquete.zip" download>Descargar el paquete completo <span aria-hidden="true">&darr;</span></a>
+    </div>
+
+    <!-- ═══════════════ VIDEO 1 ═══════════════ -->
+    <article class="video">
+      <img class="video-portada" src="img/video-1.jpg" alt="" onerror="this.remove()">
+      <div class="video-cab">
+        <span class="chapa">VIDEO 1</span>
+        <h3>Cómo crear Plataformas a Medida para negocios locales con Claude Code</h3>
+        <p>Construir el sistema de reservas, conseguir el cliente y cobrarlo. El tutorial completo.</p>
+      </div>
+
+      <div class="grupo">
+        <h4>Empieza por aquí</h4>
+        <p>Si es tu primera vez, estos dos y nada más.</p>
+      </div>
+      <div class="lista">
+        <a class="rec" href="descargas/EMPIEZA-AQUI.pdf" target="_blank" rel="noopener">
+          <span class="marca-tipo top" aria-hidden="true">1º</span>
+          <span class="rec-txt"><b>Empieza aquí</b><span>La instalación paso a paso y las palabras raras explicadas en cristiano</span></span>
+          <span class="peso">PDF · 7 pág</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/guias/01-glosario.pdf" target="_blank" rel="noopener">
+          <span class="marca-tipo pdf" aria-hidden="true">PDF</span>
+          <span class="rec-txt"><b>Glosario: qué es cada cosa</b><span>Terminal, llaves, RLS, desplegar. Léelo si alguna palabra no te suena</span></span>
+          <span class="peso">PDF · 3 pág</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+      </div>
+
+      <div class="grupo">
+        <h4>Las guías</h4>
+        <p>Construir es la parte fácil. Estas tres son las que hacen que te paguen.</p>
+      </div>
+      <div class="lista">
+        <a class="rec" href="descargas/guias/04-manual-de-prompts-agentes-y-ahorro-de-tokens.pdf" target="_blank" rel="noopener">
+          <span class="marca-tipo pdf" aria-hidden="true">PDF</span>
+          <span class="rec-txt"><b>Manual de prompts, agentes y ahorro de tokens</b><span>Cómo dirigir la IA para que no falle, crear tus propias herramientas y gastar la mitad</span></span>
+          <span class="peso">PDF · 48 pág</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/guias/02-como-conseguir-tus-primeros-3-clientes.pdf" target="_blank" rel="noopener">
+          <span class="marca-tipo pdf" aria-hidden="true">PDF</span>
+          <span class="rec-txt"><b>Cómo conseguir tus primeros 3 clientes</b><span>Dónde buscarlos, cómo calificarlos, el guion del video de muestra y 6 mensajes listos</span></span>
+          <span class="peso">PDF · 19 pág</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/guias/03-como-vender-y-cobrar-tu-primer-sistema.pdf" target="_blank" rel="noopener">
+          <span class="marca-tipo pdf" aria-hidden="true">PDF</span>
+          <span class="rec-txt"><b>Cómo vender y cobrar tu primer sistema</b><span>La llamada, el precio, las 12 objeciones respondidas y la propuesta lista para enviar</span></span>
+          <span class="peso">PDF · 24 pág</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+      </div>
+
+      <div class="grupo">
+        <h4>Plantillas y mapas</h4>
+        <p>Para tener abiertos mientras trabajas.</p>
+      </div>
+      <div class="lista">
+        <a class="rec" href="descargas/panel-del-arsenal.html" target="_blank" rel="noopener">
+          <span class="marca-tipo web" aria-hidden="true">WEB</span>
+          <span class="rec-txt"><b>El panel del arsenal</b><span>Buscador de las 13 herramientas y la ruta de 7 días con lista para marcar</span></span>
+          <span class="peso">Se abre</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/plantillas/CLAUDE-dra-ramirez-video.md" download>
+          <span class="marca-tipo web" aria-hidden="true">TXT</span>
+          <span class="rec-txt"><b>El CLAUDE.md del video</b><span>El archivo de reglas exacto del consultorio que se construye en pantalla</span></span>
+          <span class="peso">Plantilla</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/graficos/mapa-de-skills.png" target="_blank" rel="noopener">
+          <span class="marca-tipo img" aria-hidden="true">IMG</span>
+          <span class="rec-txt"><b>El mapa de las 13 herramientas</b><span>Las cuatro fases y en qué orden se usa cada una</span></span>
+          <span class="peso">Imagen</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/graficos/ruta-7-dias.png" target="_blank" rel="noopener">
+          <span class="marca-tipo img" aria-hidden="true">IMG</span>
+          <span class="rec-txt"><b>La ruta de 7 días</b><span>De cero a tu primera propuesta enviada, día por día</span></span>
+          <span class="peso">Imagen</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/graficos/modelo-economico.png" target="_blank" rel="noopener">
+          <span class="marca-tipo img" aria-hidden="true">IMG</span>
+          <span class="rec-txt"><b>Los números reales del negocio</b><span>Lo que cuesta cada cliente al mes y cuánto te queda, con los precios verificados</span></span>
+          <span class="peso">Imagen</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/graficos/embudo-prospeccion.png" target="_blank" rel="noopener">
+          <span class="marca-tipo img" aria-hidden="true">IMG</span>
+          <span class="rec-txt"><b>El embudo de prospección</b><span>Cuántos mensajes hacen falta, de verdad, para el primer cliente</span></span>
+          <span class="peso">Imagen</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/graficos/arquitectura-sistema.png" target="_blank" rel="noopener">
+          <span class="marca-tipo img" aria-hidden="true">IMG</span>
+          <span class="rec-txt"><b>Cómo se conecta todo</b><span>El mapa del sistema: la página, la base de datos y el panel</span></span>
+          <span class="peso">Imagen</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+        <a class="rec" href="descargas/DASVO-todo-el-paquete.zip" download>
+          <span class="marca-tipo zip" aria-hidden="true">ZIP</span>
+          <span class="rec-txt"><b>Todo el paquete del video 1</b><span>Las guías, las plantillas, los gráficos y el panel en un solo archivo</span></span>
+          <span class="peso">2 MB</span>
+          <span class="flecha" aria-hidden="true">&rsaquo;</span>
+        </a>
+      </div>
+    </article>
+
+    <!-- ═══════ AQUI SE AGREGAN LOS VIDEOS NUEVOS ═══════
+         Copia el bloque <article class="video"> completo de arriba, pegalo
+         justo debajo de este comentario y cambiale:
+           1. la imagen de portada  (img/video-N.jpg)
+           2. el numero de la chapa (VIDEO 2)
+           3. el <h3> y el <p> del encabezado
+           4. los grupos y las lineas <a class="rec">
+         Lo mas nuevo va al final, como esta anunciado en la portada.
+         Si no quieres tocar el HTML, pidele a Claude Code que lo haga:
+         el README de este repositorio trae el prompt exacto.
+    ═══════════════════════════════════════════════════ -->
+
+  </div>
+</section>
+
+<section id="ayuda">
+  <div class="wrap">
+    <div class="cabecera">
+      <h2>Si algo no funciona</h2>
+      <p>Los tropiezos de siempre, con la solución. Búscalo aquí antes de rendirte.</p>
+    </div>
+
+    <details class="faq"><summary>No me aparece el comando /plugin</summary>
+      <div class="faq-cuerpo">Tu Claude Code está desactualizado. Ciérralo por completo, actualízalo desde claude.com/code y ábrelo otra vez. El comando aparece solo.</div></details>
+
+    <details class="faq"><summary>Dice que no encuentra el marketplace</summary>
+      <div class="faq-cuerpo">Casi siempre la línea quedó cortada o le sobró un espacio al pegarla. Usa el botón <b>Copiar</b> de arriba en vez de escribirla a mano y pégala de nuevo.</div></details>
+
+    <details class="faq"><summary>Escribí / y no salió ninguna dasvo</summary>
+      <div class="faq-cuerpo">Cierra Claude Code por completo y vuelve a abrirlo. Escribe <code>/</code> otra vez. Si sigue sin salir, repite el paso 2 y luego <code>/reload-plugins</code>.</div></details>
+
+    <details class="faq"><summary>Me pide iniciar sesión</summary>
+      <div class="faq-cuerpo">Es normal la primera vez. Inicia sesión con tu cuenta de Claude y continúa donde ibas. Recuerda que el plan gratuito de Claude no incluye Claude Code: necesitas Pro, Max, Team o Enterprise.</div></details>
+
+    <details class="faq"><summary>Salió un texto rojo largo que no entiendo</summary>
+      <div class="faq-cuerpo">Cópialo completo y pégalo en la comunidad diciendo en qué paso estabas y si usas Windows o Mac. Con eso se resuelve en un minuto. Lo que no funciona es intentarlo diez veces sin contarle a nadie qué dice.</div></details>
+
+    <details class="faq"><summary>¿Cómo actualizo cuando salgan herramientas nuevas?</summary>
+      <div class="faq-cuerpo">Una sola línea dentro de Claude Code: <code>/plugin marketplace update dasvo-ia-builders</code>. No tienes que volver a descargar nada de esta página.</div></details>
+
+    <details class="faq"><summary>¿Esto me sirve si no sé programar?</summary>
+      <div class="faq-cuerpo">Sí. Las herramientas le dicen a Claude Code qué hacer y en qué orden. Lo único que haces tú a mano es crear tus cuentas en tres servicios, copiar unas llaves donde te indiquen, decidir cosas del negocio y hablarle a los clientes. Lo demás lo hace la máquina.</div></details>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Antes de usar esto con un cliente real</h2>
+    <p><strong>Verifica los precios.</strong> Los de servicios como Vercel y Supabase que aparecen en las guías se revisaron en julio de 2026. Los cambian, así que confírmalos antes de cotizarle a alguien.</p>
+    <p><strong>Los precios que enseñamos a cobrar son precios de mercado</strong>, no una promesa de que vayas a ganar eso. Los rangos de conversión son expectativas de trabajo, no estadísticas de un estudio: reemplázalos con tus propios números en cuanto tengas treinta mensajes enviados.</p>
+    <p><strong>Los términos contractuales y tributarios varían por país.</strong> Revisa los tuyos con un contador o abogado local antes de firmar tu primer contrato.</p>
+    <p class="pie">Dasvo IA Builders — recursos gratuitos, sin registro.</p>
+  </div>
+</footer>
+
+<div class="oculto" role="status" aria-live="polite" id="aviso"></div>
+
+<script>
+(function(){
+  var aviso = document.getElementById('aviso');
+  function marcar(b){
+    var previo = b.textContent;
+    b.textContent = 'Copiado';
+    b.dataset.ok = '1';
+    aviso.textContent = 'Comando copiado al portapapeles';
+    setTimeout(function(){
+      b.textContent = previo;
+      delete b.dataset.ok;
+      aviso.textContent = '';
+    }, 1800);
+  }
+  function respaldo(texto, listo){
+    var a = document.createElement('textarea');
+    a.value = texto; a.setAttribute('readonly','');
+    a.style.position = 'fixed'; a.style.opacity = '0';
+    document.body.appendChild(a); a.select();
+    try { document.execCommand('copy'); listo(); } catch(e){}
+    document.body.removeChild(a);
+  }
+  var repro=document.getElementById('repro');
+  if(repro){
+    var id=repro.dataset.id;
+    if(!id||id==='PON-AQUI-EL-ID'){
+      repro.innerHTML='<span class="sin-video"><b>Aqui va el video</b><span>Reemplaza PON-AQUI-EL-ID en el codigo por el id de tu video de YouTube.</span></span>';
+      repro.style.cursor='default';
+      repro.setAttribute('aria-label','El video todavia no esta publicado');
+    } else {
+      repro.addEventListener('click',function(){
+        var f=document.createElement('iframe');
+        f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0';
+        f.title='Video de Dasvo IA Builders';
+        f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture';
+        f.allowFullscreen=true;
+        repro.innerHTML=''; repro.appendChild(f); repro.style.cursor='default';
+      },{once:true});
+    }
+  }
+  document.querySelectorAll('.copiar').forEach(function(b){
+    b.addEventListener('click', function(){
+      var texto = document.getElementById(b.dataset.c).textContent.trim();
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(
+          function(){ marcar(b); },
+          function(){ respaldo(texto, function(){ marcar(b); }); }
+        );
+      } else {
+        respaldo(texto, function(){ marcar(b); });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
