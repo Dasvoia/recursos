@@ -3,55 +3,60 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Dasvo IA Builders — Panel del arsenal</title>
 <style>
-:root{--az:#1e5f8a;--tx:#1a2733;--mu:#6b7c8a;--bd:#dbe5ec;--bg:#f4f8fb}
+:root{--az:#1a5479;--tx:#0d1a23;--mu:#566673;--bd:#d3e0e9;--bg:#f4f8fb;
+      --verde:#217a58;--ambar:#8a5a12;--bdui:#8596a1}
 *{box-sizing:border-box}
 body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--tx);background:#fff}
 .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
-header.top{background:linear-gradient(160deg,#123c58,#1e5f8a);color:#fff;padding:52px 0 44px}
-header.top h1{margin:0 0 8px;font-size:38px;letter-spacing:-.5px}
-header.top p{margin:0;opacity:.88;font-size:17px;max-width:760px}
+header.top{background:linear-gradient(168deg,#ffffff 0%,#f6fafd 46%,#eaf3f9 100%);
+           color:var(--tx);padding:52px 0 44px;border-bottom:1px solid var(--bd)}
+header.top h1{margin:0 0 8px;font-size:38px;letter-spacing:-.5px;color:var(--tx)}
+header.top p{margin:0;font-size:17px;max-width:760px;color:#39485a}
+header.top a{color:var(--az);font-weight:600}
 .kpis{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
-.kpi{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:9px;padding:12px 18px}
-.kpi b{display:block;font-size:24px;line-height:1.2}
-.kpi span{font-size:12.5px;opacity:.85}
+.kpi{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:12px 18px;
+     box-shadow:0 1px 3px rgba(13,26,35,.05)}
+.kpi b{display:block;font-size:24px;line-height:1.2;color:var(--az)}
+.kpi span{font-size:12.5px;color:var(--mu)}
 h2{font-size:26px;margin:0 0 6px;letter-spacing:-.3px}
 .sub{color:var(--mu);margin:0 0 22px;font-size:14.5px}
 section{padding:48px 0;border-top:1px solid var(--bd)}
 .tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:22px}
 #q{flex:1;min-width:220px;padding:11px 14px;border:1.5px solid var(--bd);border-radius:8px;font-size:15px}
 #q:focus{outline:none;border-color:var(--az)}
-.fbtn{padding:9px 15px;border:1.5px solid var(--bd);background:#fff;border-radius:20px;cursor:pointer;font-size:13.5px;color:var(--mu)}
+.fbtn{padding:9px 15px;border:1.5px solid var(--bdui);background:#fff;border-radius:20px;cursor:pointer;font-size:13.5px;color:#39485a}
+.fbtn:focus-visible,#q:focus-visible,.guia:focus-visible,.dia:focus-visible,summary:focus-visible{outline:3px solid var(--az);outline-offset:2px}
 .fbtn.on{background:var(--az);color:#fff;border-color:var(--az)}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
 .card{border:1.5px solid var(--bd);border-radius:11px;padding:18px;background:#fff}
 .card-h{border-left:4px solid var(--c);padding-left:12px;margin-bottom:10px}
 .card h3{margin:6px 0 0;font-size:19px;font-family:ui-monospace,Menlo,Consolas,monospace;color:var(--c)}
 .pill{color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.6px;padding:3px 8px;border-radius:4px}
-.res{margin:0 0 10px;font-size:14.5px;color:#3d4d5c}
+.res{margin:0 0 10px;font-size:14.5px;color:#39485a}
 details summary{cursor:pointer;font-size:13.5px;color:var(--az);font-weight:600}
 .det{padding-top:10px}
 .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.8px;color:var(--mu);margin:10px 0 6px;font-weight:700}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:3px 10px;font-size:12.5px;color:#42535f}
-.det ul{margin:0;padding-left:18px;font-size:13.5px;color:#42535f}
+.chip{background:var(--bg);border:1px solid var(--bd);border-radius:14px;padding:3px 10px;font-size:12.5px;color:#39485a}
+.det ul{margin:0;padding-left:18px;font-size:13.5px;color:#39485a}
 code{background:var(--bg);padding:1px 5px;border-radius:4px;font-size:12.5px;font-family:ui-monospace,Menlo,Consolas,monospace}
-pre{background:#12222e;color:#dbe9f2;padding:16px 18px;border-radius:9px;overflow:auto;font-size:13px;line-height:1.55}
+pre{background:#eef4f8;color:#14425e;border:1px solid var(--bd);padding:16px 18px;border-radius:9px;overflow:auto;font-size:13px;line-height:1.55}
 .guias{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
 .guia{display:block;text-decoration:none;color:inherit;border:1.5px solid var(--bd);border-radius:11px;padding:18px;transition:.15s}
 .guia:hover{border-color:var(--az);box-shadow:0 3px 14px rgba(30,95,138,.1)}
 .guia h4{margin:0 0 8px;font-size:16.5px;color:var(--az)}
-.guia p{margin:0 0 10px;font-size:14px;color:#4a5c6a}
+.guia p{margin:0 0 10px;font-size:14px;color:#39485a}
 .fn{font-size:12px;color:var(--mu);font-family:ui-monospace,Menlo,Consolas,monospace}
 .dia{display:flex;gap:12px;align-items:flex-start;padding:13px 16px;border:1.5px solid var(--bd);border-radius:9px;margin-bottom:9px;cursor:pointer}
 .dia input{display:none}
 .marca{flex:0 0 20px;height:20px;border:2px solid var(--bd);border-radius:5px;margin-top:2px}
-.dia input:checked ~ .marca{background:#2f8f6b;border-color:#2f8f6b}
+.dia input:checked ~ .marca{background:#217a58;border-color:#217a58}
 .dia input:checked ~ .dtxt{opacity:.5;text-decoration:line-through}
 .dtxt{font-size:14.5px}
 .fig{width:100%;height:auto;border:1.5px solid var(--bd);border-radius:11px;margin-bottom:26px;background:#fff}
 .aviso{background:#fdfaf5;border:1.5px solid #e6d3b4;border-radius:10px;padding:20px 22px}
 .aviso h3{margin:0 0 10px;font-size:17px}
-.aviso li{font-size:14.5px;margin-bottom:7px;color:#4a5c6a}
+.aviso li{font-size:14.5px;margin-bottom:7px;color:#39485a}
 footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;border-top:1px solid var(--bd)}
 .hide{display:none}
 @media(max-width:640px){header.top h1{font-size:28px}h2{font-size:22px}}
@@ -59,10 +64,10 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
 
 <header class="top"><div class="wrap">
   <h1>Dasvo IA Builders</h1>
-  <p style="margin-bottom:10px"><a href="https://dasvo-recursos.vercel.app" style="color:#9fd8f5">https://dasvo-recursos.vercel.app</a> &mdash; la biblioteca completa, siempre actualizada.</p>
+  <p style="margin-bottom:10px"><a href="https://dasvo-recursos.vercel.app" style="color:#1a5479">https://dasvo-recursos.vercel.app</a> &mdash; la biblioteca completa, siempre actualizada.</p>
   <p>El arsenal completo para construir, blindar, vender, entregar y escalar plataformas de agendamiento a medida para negocios locales, usando Claude Code.</p>
   <div class="kpis">
-    <div class="kpi"><b>13</b><span>skills listas para copiar</span></div>
+    <div class="kpi"><b>13</b><span>skills, dos lineas para instalar</span></div>
     <div class="kpi"><b>4</b><span>guias de fondo</span></div>
     <div class="kpi"><b>12</b><span>perfiles de nicho</span></div>
     <div class="kpi"><b>29</b><span>errores catalogados</span></div>
@@ -98,8 +103,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
   </div>
   <div class="grid" id="grid">
     <article class="card" data-fase="1" data-txt="setup-cuentas crea y conecta supabase, github y vercel, consigue las llaves y las deja en .env.local sin que pasen nunca por el chat. guía al usuario paso a paso para crear y conectar las cuentas de supabase, github y vercel, conseguir las llaves (api keys) y dejarlas configuradas de forma segura en .env.local. úsala cuando el usuario diga que no tiene cuenta en alguno de estos servicios, no sepa dónde están las llaves, necesite configurar variables de entorno, o al iniciar un proyecto nuevo que use estos servicios.">
-      <header class="card-h" style="--c:#1e5f8a">
-        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+      <header class="card-h" style="--c:#1a5479">
+        <span class="pill" style="background:#1a5479">FASE 1 · MONTAR</span>
         <h3>/setup-cuentas</h3>
       </header>
       <p class="res">Crea y conecta Supabase, GitHub y Vercel, consigue las llaves y las deja en .env.local sin que pasen nunca por el chat.</p>
@@ -114,8 +119,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="1" data-txt="sistema-de-citas la principal. te entrevista, escribe el claude.md del proyecto y construye el sistema por etapas verificadas, una a la vez. construye un sistema completo de agendamiento de citas en línea para un negocio local (consultorio, barbería, spa, clínica estética, veterinaria, taller) usando next.js, supabase y vercel. úsala cuando el usuario quiera crear un sistema de reservas, una agenda en línea, una plataforma de citas para un cliente, o diga &quot;quiero hacer el sistema del video&quot;. primero entrevista al usuario con preguntas ">
-      <header class="card-h" style="--c:#1e5f8a">
-        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+      <header class="card-h" style="--c:#1a5479">
+        <span class="pill" style="background:#1a5479">FASE 1 · MONTAR</span>
         <h3>/sistema-de-citas</h3>
       </header>
       <p class="res">La principal. Te entrevista, escribe el CLAUDE.md del proyecto y construye el sistema por etapas verificadas, una a la vez.</p>
@@ -130,8 +135,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="1" data-txt="adaptar-a-nicho convierte el sistema base en el de otro negocio cambiando reglas, vocabulario y datos, no solo los colores. 12 perfiles listos. adapta el sistema de reservas base (construido para un consultorio odontológico) a otro tipo de negocio local, cambiando reglas de negocio, modelo de datos, vocabulario, servicios y estilo visual, no solo los colores. trae 12 perfiles de nicho listos con servicios, precios orientativos, horarios, paleta y la diferencia estructural de cada uno.">
-      <header class="card-h" style="--c:#1e5f8a">
-        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+      <header class="card-h" style="--c:#1a5479">
+        <span class="pill" style="background:#1a5479">FASE 1 · MONTAR</span>
         <h3>/adaptar-a-nicho</h3>
       </header>
       <p class="res">Convierte el sistema base en el de otro negocio cambiando reglas, vocabulario y datos, no solo los colores. 12 perfiles listos.</p>
@@ -146,8 +151,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="1" data-txt="ahorro-tokens corta las tres fugas que gastan tu plan: contexto repetido, errores mal reportados y archivos pegados en el chat. hace que el trabajo con claude code gaste menos tokens y avance más rápido. úsala cuando el usuario pregunte cómo gastar menos, diga que se le acaban los límites o créditos, la sesión esté lenta o muy cargada, o al arrancar un proyecto largo para establecer buenos hábitos desde el inicio.">
-      <header class="card-h" style="--c:#1e5f8a">
-        <span class="pill" style="background:#1e5f8a">FASE 1 · MONTAR</span>
+      <header class="card-h" style="--c:#1a5479">
+        <span class="pill" style="background:#1a5479">FASE 1 · MONTAR</span>
         <h3>/ahorro-tokens</h3>
       </header>
       <p class="res">Corta las tres fugas que gastan tu plan: contexto repetido, errores mal reportados y archivos pegados en el chat.</p>
@@ -161,9 +166,25 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
         </div>
       </details>
     </article>
+    <article class="card" data-fase="2" data-txt="diseno-pro diseño profesional de la interfaz ui ux que el sistema se vea de agencia y no de proyecto de fin de semana. tokens de color, tipografia y espaciado, jerarquia de cada pantalla, contraste wcag aa con numeros reales, teclado, celular y textos de la interfaz. usala cuando el sistema ya funcione y toque hacerlo ver bien, o cuando digas se ve feo, se ve muy simple, parece hecho por un principiante, no se ve profesional, mejora el diseño, hazlo mas bonito, que se vea premium, los colores no combinan, se ve mal en el celular, revisa el diseño, contraste, no se lee bien, paleta de colores, tipografia, ui, ux, diseño. tambien antes de grabar una demo o de entregar.">
+      <header class="card-h" style="--c:#217a58">
+        <span class="pill" style="background:#217a58">FASE 2 · BLINDAR</span>
+        <h3>/diseno-pro</h3>
+      </header>
+      <p class="res">Que el sistema se vea de agencia y no de proyecto de fin de semana. Tokens, jerarquia, contraste WCAG AA con numeros reales, teclado, celular y textos.</p>
+      <details>
+        <summary>Ver frases que la activan y que trae adentro</summary>
+        <div class="det">
+          <p class="lbl">Se activa cuando dices cosas como</p>
+          <div class="chips"><span class="chip">se ve feo</span><span class="chip">se ve muy simple</span><span class="chip">no se ve profesional</span><span class="chip">mejora el diseño</span><span class="chip">que se vea premium</span><span class="chip">los colores no combinan</span><span class="chip">se ve mal en el celular</span><span class="chip">no se lee bien</span><span class="chip">contraste</span><span class="chip">paleta de colores</span><span class="chip">UI</span><span class="chip">UX</span></div>
+          <p class="lbl">Archivos</p>
+          <ul><li><code>skills/diseno-pro/SKILL.md</code> — 233 lineas</li><li><code>references/paletas-y-tipografia.md</code></li><li><code>references/componentes.md</code></li><li><code>scripts/contraste.py</code> — calcula el contraste real</li></ul>
+        </div>
+      </details>
+    </article>
     <article class="card" data-fase="2" data-txt="seguridad-web la revision obligatoria antes de entregar, publicar o grabar. llaves, rls, validacion en servidor, datos personales y pantalla limpia. revisión de seguridad obligatoria antes de entregar un proyecto a un cliente o publicarlo. cubre llaves y secretos, políticas rls de supabase, validación en el servidor, datos personales y privacidad, y grabación segura de pantalla. úsala cuando el usuario vaya a entregar o publicar un proyecto, mencione seguridad, llaves, api keys, datos personales, o antes de grabar la pantalla para un video o d">
-      <header class="card-h" style="--c:#2f8f6b">
-        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+      <header class="card-h" style="--c:#217a58">
+        <span class="pill" style="background:#217a58">FASE 2 · BLINDAR</span>
         <h3>/seguridad-web</h3>
       </header>
       <p class="res">La revision obligatoria antes de entregar, publicar o grabar. Llaves, RLS, validacion en servidor, datos personales y pantalla limpia.</p>
@@ -178,8 +199,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="2" data-txt="arreglar-errores cuando algo falla y no sabes describirlo. reporte estructurado, 6 familias de fallo, protocolo de 6 pasos y regla anti-bucle. diagnostica y arregla cualquier fallo de un proyecto next.js + supabase + vercel con un protocolo ordenado: primero pide el reporte completo, clasifica el fallo en una de seis familias, formula una sola hipótesis y hace el cambio mínimo que la comprueba. evita el bucle de parchar a ciegas.">
-      <header class="card-h" style="--c:#2f8f6b">
-        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+      <header class="card-h" style="--c:#217a58">
+        <span class="pill" style="background:#217a58">FASE 2 · BLINDAR</span>
         <h3>/arreglar-errores</h3>
       </header>
       <p class="res">Cuando algo falla y no sabes describirlo. Reporte estructurado, 6 familias de fallo, protocolo de 6 pasos y regla anti-bucle.</p>
@@ -194,8 +215,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="2" data-txt="publicar-online de tu computador a una url real: github, vercel, variables de entorno, dominio propio y verificacion desde un celular. lleva el proyecto de la computadora a internet con una url real que el cliente pueda abrir: revisión previa, subida a github en repositorio privado, conexión con vercel, variables de entorno configuradas antes del primer despliegue, dominio propio y verificación en un celular real. incluye el costo mensual verdadero por cliente y la restricción de licencia de vercel hobby.">
-      <header class="card-h" style="--c:#2f8f6b">
-        <span class="pill" style="background:#2f8f6b">FASE 2 · BLINDAR</span>
+      <header class="card-h" style="--c:#217a58">
+        <span class="pill" style="background:#217a58">FASE 2 · BLINDAR</span>
         <h3>/publicar-online</h3>
       </header>
       <p class="res">De tu computador a una URL real: GitHub, Vercel, variables de entorno, dominio propio y verificacion desde un celular.</p>
@@ -210,8 +231,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="3" data-txt="conseguir-clientes toma un prospecto, lo califica contra 8 senales, clona y personaliza la demo, escribe el guion del loom y el primer mensaje. convierte un negocio prospecto concreto en una demo personalizada desplegada y un primer mensaje enviado. investiga el negocio, lo califica, clona el proyecto base con su marca y servicios reales, lo despliega, y entrega el guion del loom, los mensajes de contacto y el seguimiento. úsala cuando el usuario pegue el instagram, la web o el google maps de un negocio, o diga cosas como &quot;tengo un prospe">
-      <header class="card-h" style="--c:#c9862a">
-        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+      <header class="card-h" style="--c:#8a5a12">
+        <span class="pill" style="background:#8a5a12">FASE 3 · VENDER</span>
         <h3>/conseguir-clientes</h3>
       </header>
       <p class="res">Toma un prospecto, lo califica contra 8 senales, clona y personaliza la demo, escribe el guion del Loom y el primer mensaje.</p>
@@ -226,8 +247,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="3" data-txt="cerrar-venta calculadora del dolor en pesos, guion de la llamada de 20 minutos, el precio, 12 objeciones y la propuesta de una pagina. prepara, ejecuta y cierra la venta de un cliente concreto que ya respondió. calcula en pantalla cuánto pierde el negocio al mes, arma el guion de la llamada de diagnóstico, recomienda paquete y precio, responde objeciones palabra por palabra, genera la propuesta de una página y programa el seguimiento. úsala cuando el usuario diga cosas como &quot;me contestó el del restaurante y ahora qué&quot;, &quot;tengo lla">
-      <header class="card-h" style="--c:#c9862a">
-        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+      <header class="card-h" style="--c:#8a5a12">
+        <span class="pill" style="background:#8a5a12">FASE 3 · VENDER</span>
         <h3>/cerrar-venta</h3>
       </header>
       <p class="res">Calculadora del dolor en pesos, guion de la llamada de 20 minutos, el precio, 12 objeciones y la propuesta de una pagina.</p>
@@ -242,8 +263,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="3" data-txt="entregar-al-cliente de &quot;funciona en mi computador&quot; a &quot;me paga la mensualidad&quot;: checklist, cuentas, manual, capacitacion y primeros 30 dias. lleva el sistema de reservas de &quot;funciona en mi computador&quot; a &quot;el cliente lo está usando y me paga la mensualidad&quot;. cubre la checklist previa a la entrega, a nombre de quién quedan las cuentas de supabase y vercel, el manual de uso del dueño, la capacitación de 30 minutos con el equipo, el seguimiento de los primeros 30 días, el alcance del mantenimiento mensual y el pedido de testimonio y referid">
-      <header class="card-h" style="--c:#c9862a">
-        <span class="pill" style="background:#c9862a">FASE 3 · VENDER</span>
+      <header class="card-h" style="--c:#8a5a12">
+        <span class="pill" style="background:#8a5a12">FASE 3 · VENDER</span>
         <h3>/entregar-al-cliente</h3>
       </header>
       <p class="res">De &quot;funciona en mi computador&quot; a &quot;me paga la mensualidad&quot;: checklist, cuentas, manual, capacitacion y primeros 30 dias.</p>
@@ -258,8 +279,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="4" data-txt="crear-skill convierte lo que repites en una skill propia, con el description bien escrito para que se active cuando debe. crea una skill nueva de claude code bien formada, sin que el usuario tenga que saber el formato. entrevista corto, decide si de verdad debe ser una skill (o si va al claude.md o a un subagente), escribe el frontmatter y el description con las frases disparadoras correctas, crea la carpeta en la ruta que corresponde y prueba que se active.">
-      <header class="card-h" style="--c:#1a2733">
-        <span class="pill" style="background:#1a2733">FASE 4 · ESCALAR</span>
+      <header class="card-h" style="--c:#0d1a23">
+        <span class="pill" style="background:#0d1a23">FASE 4 · ESCALAR</span>
         <h3>/crear-skill</h3>
       </header>
       <p class="res">Convierte lo que repites en una skill propia, con el description bien escrito para que se active cuando debe.</p>
@@ -274,8 +295,8 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
       </details>
     </article>
     <article class="card" data-fase="4" data-txt="crear-subagente delega el trabajo pesado a un subagente que corre en su propia ventana y solo devuelve el resumen. 4 listos para copiar. crea un subagente de claude code y decide si conviene delegarle el trabajo. entrevista qué debe hacer y qué debe devolver, escribe el archivo con el frontmatter correcto y un system prompt con rol, alcance, prohibiciones y formato de salida, le da solo las herramientas mínimas y lo prueba con un encargo real.">
-      <header class="card-h" style="--c:#1a2733">
-        <span class="pill" style="background:#1a2733">FASE 4 · ESCALAR</span>
+      <header class="card-h" style="--c:#0d1a23">
+        <span class="pill" style="background:#0d1a23">FASE 4 · ESCALAR</span>
         <h3>/crear-subagente</h3>
       </header>
       <p class="res">Delega el trabajo pesado a un subagente que corre en su propia ventana y solo devuelve el resumen. 4 listos para copiar.</p>
@@ -297,123 +318,124 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
   <p class="sub">Las cuatro fases se recorren una sola vez por cliente.</p>
   <svg class="fig" viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
   <rect width="1000" height="620" fill="#ffffff"/>
-  <text x="40" y="48" font-size="26" font-weight="bold" fill="#1a2733">El arsenal: 13 skills, 4 fases</text>
-  <text x="40" y="74" font-size="14" fill="#6b7c8a">Dasvo IA Builders — el orden en que se usan, de izquierda a derecha</text>
+  <text x="40" y="48" font-size="26" font-weight="bold" fill="#0d1a23">El arsenal: 13 skills, 4 fases</text>
+  <text x="40" y="74" font-size="14" fill="#566673">Dasvo IA Builders — el orden en que se usan, de izquierda a derecha</text>
   <line x1="40" y1="92" x2="960" y2="92" stroke="#dbe5ec" stroke-width="2"/>
 
   <!-- FASE 1 -->
   <rect x="40" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <rect x="40" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
-  <rect x="40" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <rect x="40" y="112" width="215" height="42" rx="10" fill="#1a5479"/>
+  <rect x="40" y="140" width="215" height="14" fill="#1a5479"/>
   <text x="147" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 1 — MONTAR</text>
-  <text x="147" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Antes de escribir nada</text>
+  <text x="147" y="176" font-size="12" fill="#566673" text-anchor="middle">Antes de escribir nada</text>
 
-  <rect x="58" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
-  <text x="72" y="214" font-size="13.5" font-weight="bold" fill="#1e5f8a">/setup-cuentas</text>
-  <text x="72" y="232" font-size="11.5" fill="#6b7c8a">Supabase, GitHub y Vercel</text>
-  <text x="72" y="248" font-size="11.5" fill="#6b7c8a">Llaves sin errores</text>
+  <rect x="58" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#1a5479" stroke-width="1.5"/>
+  <text x="72" y="214" font-size="13.5" font-weight="bold" fill="#1a5479">/setup-cuentas</text>
+  <text x="72" y="232" font-size="11.5" fill="#566673">Supabase, GitHub y Vercel</text>
+  <text x="72" y="248" font-size="11.5" fill="#566673">Llaves sin errores</text>
 
-  <rect x="58" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
-  <text x="72" y="292" font-size="13.5" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
-  <text x="72" y="310" font-size="11.5" fill="#6b7c8a">Entrevista, CLAUDE.md</text>
-  <text x="72" y="326" font-size="11.5" fill="#6b7c8a">y construccion por etapas</text>
+  <rect x="58" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#1a5479" stroke-width="1.5"/>
+  <text x="72" y="292" font-size="13.5" font-weight="bold" fill="#1a5479">/sistema-de-citas</text>
+  <text x="72" y="310" font-size="11.5" fill="#566673">Entrevista, CLAUDE.md</text>
+  <text x="72" y="326" font-size="11.5" fill="#566673">y construccion por etapas</text>
 
-  <rect x="58" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
-  <text x="72" y="370" font-size="13.5" font-weight="bold" fill="#1e5f8a">/adaptar-a-nicho</text>
-  <text x="72" y="388" font-size="11.5" fill="#6b7c8a">12 perfiles de negocio</text>
-  <text x="72" y="404" font-size="11.5" fill="#6b7c8a">listos para aplicar</text>
+  <rect x="58" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#1a5479" stroke-width="1.5"/>
+  <text x="72" y="370" font-size="13.5" font-weight="bold" fill="#1a5479">/adaptar-a-nicho</text>
+  <text x="72" y="388" font-size="11.5" fill="#566673">12 perfiles de negocio</text>
+  <text x="72" y="404" font-size="11.5" fill="#566673">listos para aplicar</text>
 
-  <rect x="58" y="426" width="179" height="66" rx="7" fill="#ffffff" stroke="#1e5f8a" stroke-width="1.5"/>
-  <text x="72" y="448" font-size="13.5" font-weight="bold" fill="#1e5f8a">/ahorro-tokens</text>
-  <text x="72" y="466" font-size="11.5" fill="#6b7c8a">Que el plan rinda</text>
-  <text x="72" y="482" font-size="11.5" fill="#6b7c8a">el doble</text>
+  <rect x="58" y="426" width="179" height="66" rx="7" fill="#ffffff" stroke="#1a5479" stroke-width="1.5"/>
+  <text x="72" y="448" font-size="13.5" font-weight="bold" fill="#1a5479">/ahorro-tokens</text>
+  <text x="72" y="466" font-size="11.5" fill="#566673">Que el plan rinda</text>
+  <text x="72" y="482" font-size="11.5" fill="#566673">el doble</text>
 
   <!-- FASE 2 -->
   <rect x="273" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <rect x="273" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
-  <rect x="273" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <rect x="273" y="112" width="215" height="42" rx="10" fill="#1a5479"/>
+  <rect x="273" y="140" width="215" height="14" fill="#1a5479"/>
   <text x="380" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 2 — BLINDAR</text>
-  <text x="380" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Antes de mostrarlo a nadie</text>
+  <text x="380" y="176" font-size="12" fill="#566673" text-anchor="middle">Antes de mostrarlo a nadie</text>
 
-  <rect x="291" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
-  <text x="305" y="214" font-size="13.5" font-weight="bold" fill="#2f8f6b">/seguridad-web</text>
-  <text x="305" y="232" font-size="11.5" fill="#6b7c8a">Llaves, RLS, validacion</text>
-  <text x="305" y="248" font-size="11.5" fill="#6b7c8a">en el servidor, privacidad</text>
+  <rect x="291" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#217a58" stroke-width="1.5"/>
+  <text x="305" y="214" font-size="13.5" font-weight="bold" fill="#217a58">/diseno-pro</text>
+  <text x="305" y="232" font-size="11.5" fill="#566673">Que se vea de agencia:</text>
+  <text x="305" y="248" font-size="11.5" fill="#566673">UI, UX y contraste AA</text>
 
-  <rect x="291" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
-  <text x="305" y="292" font-size="13.5" font-weight="bold" fill="#2f8f6b">/arreglar-errores</text>
-  <text x="305" y="310" font-size="11.5" fill="#6b7c8a">Protocolo de 6 pasos</text>
-  <text x="305" y="326" font-size="11.5" fill="#6b7c8a">29 errores catalogados</text>
+  <rect x="291" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#217a58" stroke-width="1.5"/>
+  <text x="305" y="292" font-size="13.5" font-weight="bold" fill="#217a58">/seguridad-web</text>
+  <text x="305" y="310" font-size="11.5" fill="#566673">Llaves, RLS, validacion</text>
+  <text x="305" y="326" font-size="11.5" fill="#566673">en el servidor, privacidad</text>
 
-  <rect x="291" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#2f8f6b" stroke-width="1.5"/>
-  <text x="305" y="370" font-size="13.5" font-weight="bold" fill="#2f8f6b">/publicar-online</text>
-  <text x="305" y="388" font-size="11.5" fill="#6b7c8a">GitHub, Vercel, dominio</text>
-  <text x="305" y="404" font-size="11.5" fill="#6b7c8a">y URL real</text>
+  <rect x="291" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#217a58" stroke-width="1.5"/>
+  <text x="305" y="370" font-size="13.5" font-weight="bold" fill="#217a58">/arreglar-errores</text>
+  <text x="305" y="388" font-size="11.5" fill="#566673">Protocolo de 6 pasos</text>
+  <text x="305" y="404" font-size="11.5" fill="#566673">29 errores catalogados</text>
 
-  <rect x="291" y="426" width="179" height="66" rx="7" fill="#fbfdfc" stroke="#c9dae6" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <text x="305" y="452" font-size="12" fill="#6b7c8a">Regla del paquete:</text>
-  <text x="305" y="470" font-size="12" font-weight="bold" fill="#1a2733">nada sale sin pasar</text>
-  <text x="305" y="486" font-size="12" font-weight="bold" fill="#1a2733">por seguridad-web</text>
+  <rect x="291" y="426" width="179" height="66" rx="7" fill="#ffffff" stroke="#217a58" stroke-width="1.5"/>
+  <text x="305" y="448" font-size="13.5" font-weight="bold" fill="#217a58">/publicar-online</text>
+  <text x="305" y="466" font-size="11.5" fill="#566673">GitHub, Vercel, dominio</text>
+  <text x="305" y="482" font-size="11.5" fill="#566673">y URL real</text>
 
   <!-- FASE 3 -->
   <rect x="506" y="112" width="215" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <rect x="506" y="112" width="215" height="42" rx="10" fill="#1e5f8a"/>
-  <rect x="506" y="140" width="215" height="14" fill="#1e5f8a"/>
+  <rect x="506" y="112" width="215" height="42" rx="10" fill="#1a5479"/>
+  <rect x="506" y="140" width="215" height="14" fill="#1a5479"/>
   <text x="613" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 3 — VENDER</text>
-  <text x="613" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Del prospecto al pago</text>
+  <text x="613" y="176" font-size="12" fill="#566673" text-anchor="middle">Del prospecto al pago</text>
 
-  <rect x="524" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
-  <text x="538" y="214" font-size="13.5" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
-  <text x="538" y="232" font-size="11.5" fill="#6b7c8a">Califica, clona la demo</text>
-  <text x="538" y="248" font-size="11.5" fill="#6b7c8a">y escribe el mensaje</text>
+  <rect x="524" y="192" width="179" height="66" rx="7" fill="#ffffff" stroke="#8a5a12" stroke-width="1.5"/>
+  <text x="538" y="214" font-size="13.5" font-weight="bold" fill="#8a5a12">/conseguir-clientes</text>
+  <text x="538" y="232" font-size="11.5" fill="#566673">Califica, clona la demo</text>
+  <text x="538" y="248" font-size="11.5" fill="#566673">y escribe el mensaje</text>
 
-  <rect x="524" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
-  <text x="538" y="292" font-size="13.5" font-weight="bold" fill="#c9862a">/cerrar-venta</text>
-  <text x="538" y="310" font-size="11.5" fill="#6b7c8a">Calculadora del dolor,</text>
-  <text x="538" y="326" font-size="11.5" fill="#6b7c8a">precio y 12 objeciones</text>
+  <rect x="524" y="270" width="179" height="66" rx="7" fill="#ffffff" stroke="#8a5a12" stroke-width="1.5"/>
+  <text x="538" y="292" font-size="13.5" font-weight="bold" fill="#8a5a12">/cerrar-venta</text>
+  <text x="538" y="310" font-size="11.5" fill="#566673">Calculadora del dolor,</text>
+  <text x="538" y="326" font-size="11.5" fill="#566673">precio y 12 objeciones</text>
 
-  <rect x="524" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#c9862a" stroke-width="1.5"/>
-  <text x="538" y="370" font-size="13.5" font-weight="bold" fill="#c9862a">/entregar-al-cliente</text>
-  <text x="538" y="388" font-size="11.5" fill="#6b7c8a">Manual, capacitacion</text>
-  <text x="538" y="404" font-size="11.5" fill="#6b7c8a">y primeros 30 dias</text>
+  <rect x="524" y="348" width="179" height="66" rx="7" fill="#ffffff" stroke="#8a5a12" stroke-width="1.5"/>
+  <text x="538" y="370" font-size="13.5" font-weight="bold" fill="#8a5a12">/entregar-al-cliente</text>
+  <text x="538" y="388" font-size="11.5" fill="#566673">Manual, capacitacion</text>
+  <text x="538" y="404" font-size="11.5" fill="#566673">y primeros 30 dias</text>
 
   <rect x="524" y="426" width="179" height="66" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <text x="538" y="452" font-size="12" fill="#6b7c8a">Aqui es donde se</text>
-  <text x="538" y="470" font-size="12" font-weight="bold" fill="#1a2733">gana el dinero.</text>
-  <text x="538" y="486" font-size="12" fill="#6b7c8a">Construir es la parte facil.</text>
+  <text x="538" y="452" font-size="12" fill="#566673">Aqui es donde se</text>
+  <text x="538" y="470" font-size="12" font-weight="bold" fill="#0d1a23">gana el dinero.</text>
+  <text x="538" y="486" font-size="12" fill="#566673">Construir es la parte facil.</text>
 
   <!-- FASE 4 -->
   <rect x="739" y="112" width="221" height="400" rx="10" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <rect x="739" y="112" width="221" height="42" rx="10" fill="#1a2733"/>
-  <rect x="739" y="140" width="221" height="14" fill="#1a2733"/>
+  <rect x="739" y="112" width="221" height="42" rx="10" fill="#0d1a23"/>
+  <rect x="739" y="140" width="221" height="14" fill="#0d1a23"/>
   <text x="849" y="139" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">FASE 4 — ESCALAR</text>
-  <text x="849" y="176" font-size="12" fill="#6b7c8a" text-anchor="middle">Cuando ya no das abasto</text>
+  <text x="849" y="176" font-size="12" fill="#566673" text-anchor="middle">Cuando ya no das abasto</text>
 
-  <rect x="757" y="192" width="185" height="66" rx="7" fill="#ffffff" stroke="#1a2733" stroke-width="1.5"/>
-  <text x="771" y="214" font-size="13.5" font-weight="bold" fill="#1a2733">/crear-skill</text>
-  <text x="771" y="232" font-size="11.5" fill="#6b7c8a">Convierte lo que repites</text>
-  <text x="771" y="248" font-size="11.5" fill="#6b7c8a">en una skill propia</text>
+  <rect x="757" y="192" width="185" height="66" rx="7" fill="#ffffff" stroke="#0d1a23" stroke-width="1.5"/>
+  <text x="771" y="214" font-size="13.5" font-weight="bold" fill="#0d1a23">/crear-skill</text>
+  <text x="771" y="232" font-size="11.5" fill="#566673">Convierte lo que repites</text>
+  <text x="771" y="248" font-size="11.5" fill="#566673">en una skill propia</text>
 
-  <rect x="757" y="270" width="185" height="66" rx="7" fill="#ffffff" stroke="#1a2733" stroke-width="1.5"/>
-  <text x="771" y="292" font-size="13.5" font-weight="bold" fill="#1a2733">/crear-subagente</text>
-  <text x="771" y="310" font-size="11.5" fill="#6b7c8a">Delega el trabajo pesado</text>
-  <text x="771" y="326" font-size="11.5" fill="#6b7c8a">sin llenar el contexto</text>
+  <rect x="757" y="270" width="185" height="66" rx="7" fill="#ffffff" stroke="#0d1a23" stroke-width="1.5"/>
+  <text x="771" y="292" font-size="13.5" font-weight="bold" fill="#0d1a23">/crear-subagente</text>
+  <text x="771" y="310" font-size="11.5" fill="#566673">Delega el trabajo pesado</text>
+  <text x="771" y="326" font-size="11.5" fill="#566673">sin llenar el contexto</text>
 
   <rect x="757" y="348" width="185" height="144" rx="7" fill="#fbfdfe" stroke="#c9dae6" stroke-width="1.5" stroke-dasharray="4 3"/>
-  <text x="771" y="374" font-size="12" font-weight="bold" fill="#1a2733">El bucle:</text>
-  <text x="771" y="396" font-size="11.5" fill="#6b7c8a">cada cliente nuevo deja</text>
-  <text x="771" y="412" font-size="11.5" fill="#6b7c8a">una skill nueva.</text>
-  <text x="771" y="436" font-size="11.5" fill="#6b7c8a">Con la plantilla y las</text>
-  <text x="771" y="452" font-size="11.5" fill="#6b7c8a">skills, el quinto cliente</text>
-  <text x="771" y="468" font-size="11.5" fill="#6b7c8a">toma una fraccion del primero.</text>
+  <text x="771" y="374" font-size="12" font-weight="bold" fill="#0d1a23">El bucle:</text>
+  <text x="771" y="396" font-size="11.5" fill="#566673">cada cliente nuevo deja</text>
+  <text x="771" y="412" font-size="11.5" fill="#566673">una skill nueva.</text>
+  <text x="771" y="436" font-size="11.5" fill="#566673">Con la plantilla y las</text>
+  <text x="771" y="452" font-size="11.5" fill="#566673">skills, el quinto cliente</text>
+  <text x="771" y="468" font-size="11.5" fill="#566673">toma una fraccion del primero.</text>
 
   <!-- flechas entre fases -->
-  <path d="M 259 332 L 269 332" stroke="#1e5f8a" stroke-width="2"/>
-  <path d="M 492 332 L 502 332" stroke="#1e5f8a" stroke-width="2"/>
-  <path d="M 725 332 L 735 332" stroke="#1e5f8a" stroke-width="2"/>
+  <path d="M 259 332 L 269 332" stroke="#1a5479" stroke-width="2"/>
+  <path d="M 492 332 L 502 332" stroke="#1a5479" stroke-width="2"/>
+  <path d="M 725 332 L 735 332" stroke="#1a5479" stroke-width="2"/>
 
-  <text x="40" y="588" font-size="12" fill="#6b7c8a">Cada skill es una carpeta con un archivo SKILL.md. Se copian a .claude/skills/ del proyecto y se invocan escribiendo /nombre-de-la-skill.</text>
-  <text x="40" y="606" font-size="12" fill="#6b7c8a">Las cuatro fases se recorren una sola vez por cliente. La fase 4 es la que hace que el segundo cliente cueste la mitad de trabajo que el primero.</text>
+  <text x="40" y="562" font-size="12" font-weight="bold" fill="#0d1a23">Regla del paquete: nada sale sin pasar por /diseno-pro y /seguridad-web.</text>
+  <text x="40" y="588" font-size="12" fill="#566673">Se instalan con dos lineas dentro de Claude Code (/plugin marketplace add Dasvoia/dasvo-ia-builders) y se invocan escribiendo /dasvo:nombre-de-la-skill.</text>
+  <text x="40" y="606" font-size="12" fill="#566673">Las cuatro fases se recorren una sola vez por cliente. La fase 4 es la que hace que el segundo cliente cueste la mitad de trabajo que el primero.</text>
 </svg>
 
 </div></section>
@@ -459,7 +481,7 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
   </label>
   <div class="aviso" style="margin-top:20px">
     <h3>La trampa del dia 3</h3>
-    <p style="margin:0;font-size:14.5px;color:#4a5c6a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga. Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado le gana a uno perfecto guardado.</p>
+    <p style="margin:0;font-size:14.5px;color:#39485a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga. Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado le gana a uno perfecto guardado.</p>
   </div>
 </div></section>
 
@@ -494,36 +516,36 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
   <p class="sub">Precios de Vercel y Supabase verificados en julio de 2026. Verificalos antes de cotizar: cambian.</p>
   <svg class="fig" viewBox="0 0 1000 660" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
   <rect width="1000" height="660" fill="#ffffff"/>
-  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">El modelo economico, con costos reales</text>
-  <text x="40" y="72" font-size="14" fill="#6b7c8a">Precios de Vercel y Supabase verificados en julio de 2026. Verificalos antes de cotizar: cambian.</text>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#0d1a23">El modelo economico, con costos reales</text>
+  <text x="40" y="72" font-size="14" fill="#566673">Precios de Vercel y Supabase verificados en julio de 2026. Verificalos antes de cotizar: cambian.</text>
   <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
 
   <!-- Costos -->
-  <text x="40" y="124" font-size="17" font-weight="bold" fill="#1a2733">Lo que cuesta de verdad tener un cliente en produccion</text>
+  <text x="40" y="124" font-size="17" font-weight="bold" fill="#0d1a23">Lo que cuesta de verdad tener un cliente en produccion</text>
 
   <rect x="40" y="140" width="450" height="180" rx="8" fill="#fdf6f4" stroke="#e6c4bc" stroke-width="1.5"/>
   <text x="62" y="168" font-size="14" font-weight="bold" fill="#a8503c">Lo que NO sirve para un cliente que paga</text>
-  <text x="62" y="196" font-size="12.5" fill="#4a5c6a">Vercel Hobby — gratis, pero la licencia NO permite</text>
-  <text x="62" y="214" font-size="12.5" fill="#4a5c6a">uso comercial. El sitio de un cliente no puede vivir ahi.</text>
-  <text x="62" y="242" font-size="12.5" fill="#4a5c6a">Supabase Free — 500 MB, 5 GB de egress, 2 proyectos,</text>
-  <text x="62" y="260" font-size="12.5" fill="#4a5c6a">y el proyecto se PAUSA tras 1 semana sin actividad.</text>
-  <text x="62" y="278" font-size="12.5" fill="#4a5c6a">Un puente festivo apaga la agenda del negocio.</text>
+  <text x="62" y="196" font-size="12.5" fill="#39485a">Vercel Hobby — gratis, pero la licencia NO permite</text>
+  <text x="62" y="214" font-size="12.5" fill="#39485a">uso comercial. El sitio de un cliente no puede vivir ahi.</text>
+  <text x="62" y="242" font-size="12.5" fill="#39485a">Supabase Free — 500 MB, 5 GB de egress, 2 proyectos,</text>
+  <text x="62" y="260" font-size="12.5" fill="#39485a">y el proyecto se PAUSA tras 1 semana sin actividad.</text>
+  <text x="62" y="278" font-size="12.5" fill="#39485a">Un puente festivo apaga la agenda del negocio.</text>
   <text x="62" y="304" font-size="12.5" font-style="italic" fill="#a8503c">Sirven para practicar y para la demo. Nada mas.</text>
 
   <rect x="510" y="140" width="450" height="180" rx="8" fill="#f2f9f5" stroke="#b4dcc2" stroke-width="1.5"/>
-  <text x="532" y="168" font-size="14" font-weight="bold" fill="#2f8f6b">Lo que si sirve</text>
-  <text x="532" y="196" font-size="12.5" fill="#4a5c6a">Vercel Pro — 20 USD/mes por asiento, 1 TB de transferencia.</text>
-  <text x="532" y="214" font-size="12.5" fill="#4a5c6a">Un solo asiento aloja todos tus proyectos de clientes.</text>
-  <text x="532" y="242" font-size="12.5" fill="#4a5c6a">Supabase Pro — 25 USD/mes el primer proyecto, 8 GB,</text>
-  <text x="532" y="260" font-size="12.5" fill="#4a5c6a">250 GB de egress, nunca se pausa.</text>
-  <text x="532" y="278" font-size="12.5" fill="#4a5c6a">Proyectos adicionales desde 10 USD/mes.</text>
-  <text x="532" y="304" font-size="12.5" font-style="italic" fill="#2f8f6b">Ahi esta el truco: el segundo cliente cuesta 10, no 45.</text>
+  <text x="532" y="168" font-size="14" font-weight="bold" fill="#217a58">Lo que si sirve</text>
+  <text x="532" y="196" font-size="12.5" fill="#39485a">Vercel Pro — 20 USD/mes por asiento, 1 TB de transferencia.</text>
+  <text x="532" y="214" font-size="12.5" fill="#39485a">Un solo asiento aloja todos tus proyectos de clientes.</text>
+  <text x="532" y="242" font-size="12.5" fill="#39485a">Supabase Pro — 25 USD/mes el primer proyecto, 8 GB,</text>
+  <text x="532" y="260" font-size="12.5" fill="#39485a">250 GB de egress, nunca se pausa.</text>
+  <text x="532" y="278" font-size="12.5" fill="#39485a">Proyectos adicionales desde 10 USD/mes.</text>
+  <text x="532" y="304" font-size="12.5" font-style="italic" fill="#217a58">Ahi esta el truco: el segundo cliente cuesta 10, no 45.</text>
 
   <!-- Tabla -->
-  <text x="40" y="360" font-size="17" font-weight="bold" fill="#1a2733">Margen a mensualidad de 150 USD por cliente</text>
-  <text x="40" y="380" font-size="12" fill="#6b7c8a">Supuestos: Vercel Pro 20 fijo. Supabase 25 el primero + 10 cada adicional. Reserva de 5 por cliente para dominio, correo y sobrecostos.</text>
+  <text x="40" y="360" font-size="17" font-weight="bold" fill="#0d1a23">Margen a mensualidad de 150 USD por cliente</text>
+  <text x="40" y="380" font-size="12" fill="#566673">Supuestos: Vercel Pro 20 fijo. Supabase 25 el primero + 10 cada adicional. Reserva de 5 por cliente para dominio, correo y sobrecostos.</text>
 
-  <rect x="40" y="394" width="920" height="34" fill="#1e5f8a"/>
+  <rect x="40" y="394" width="920" height="34" fill="#1a5479"/>
   <text x="70" y="416" font-size="13" font-weight="bold" fill="#ffffff">Clientes</text>
   <text x="210" y="416" font-size="13" font-weight="bold" fill="#ffffff">Ingreso/mes</text>
   <text x="380" y="416" font-size="13" font-weight="bold" fill="#ffffff">Costo total</text>
@@ -532,196 +554,196 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
   <text x="890" y="416" font-size="13" font-weight="bold" fill="#ffffff">Margen</text>
 
   <rect x="40" y="428" width="920" height="34" fill="#f7fafc"/>
-  <text x="70" y="450" font-size="13" fill="#1a2733">1</text>
-  <text x="210" y="450" font-size="13" fill="#1a2733">150 USD</text>
-  <text x="380" y="450" font-size="13" fill="#1a2733">50 USD</text>
-  <text x="550" y="450" font-size="13" fill="#1a2733">50,00 USD</text>
-  <text x="760" y="450" font-size="13" fill="#1a2733">100 USD</text>
-  <text x="890" y="450" font-size="13" font-weight="bold" fill="#c9862a">67%</text>
+  <text x="70" y="450" font-size="13" fill="#0d1a23">1</text>
+  <text x="210" y="450" font-size="13" fill="#0d1a23">150 USD</text>
+  <text x="380" y="450" font-size="13" fill="#0d1a23">50 USD</text>
+  <text x="550" y="450" font-size="13" fill="#0d1a23">50,00 USD</text>
+  <text x="760" y="450" font-size="13" fill="#0d1a23">100 USD</text>
+  <text x="890" y="450" font-size="13" font-weight="bold" fill="#8a5a12">67%</text>
 
   <rect x="40" y="462" width="920" height="34" fill="#ffffff"/>
-  <text x="70" y="484" font-size="13" fill="#1a2733">3</text>
-  <text x="210" y="484" font-size="13" fill="#1a2733">450 USD</text>
-  <text x="380" y="484" font-size="13" fill="#1a2733">80 USD</text>
-  <text x="550" y="484" font-size="13" fill="#1a2733">26,67 USD</text>
-  <text x="760" y="484" font-size="13" fill="#1a2733">370 USD</text>
-  <text x="890" y="484" font-size="13" font-weight="bold" fill="#2f8f6b">82%</text>
+  <text x="70" y="484" font-size="13" fill="#0d1a23">3</text>
+  <text x="210" y="484" font-size="13" fill="#0d1a23">450 USD</text>
+  <text x="380" y="484" font-size="13" fill="#0d1a23">80 USD</text>
+  <text x="550" y="484" font-size="13" fill="#0d1a23">26,67 USD</text>
+  <text x="760" y="484" font-size="13" fill="#0d1a23">370 USD</text>
+  <text x="890" y="484" font-size="13" font-weight="bold" fill="#217a58">82%</text>
 
   <rect x="40" y="496" width="920" height="34" fill="#f7fafc"/>
-  <text x="70" y="518" font-size="13" fill="#1a2733">5</text>
-  <text x="210" y="518" font-size="13" fill="#1a2733">750 USD</text>
-  <text x="380" y="518" font-size="13" fill="#1a2733">110 USD</text>
-  <text x="550" y="518" font-size="13" fill="#1a2733">22,00 USD</text>
-  <text x="760" y="518" font-size="13" fill="#1a2733">640 USD</text>
-  <text x="890" y="518" font-size="13" font-weight="bold" fill="#2f8f6b">85%</text>
+  <text x="70" y="518" font-size="13" fill="#0d1a23">5</text>
+  <text x="210" y="518" font-size="13" fill="#0d1a23">750 USD</text>
+  <text x="380" y="518" font-size="13" fill="#0d1a23">110 USD</text>
+  <text x="550" y="518" font-size="13" fill="#0d1a23">22,00 USD</text>
+  <text x="760" y="518" font-size="13" fill="#0d1a23">640 USD</text>
+  <text x="890" y="518" font-size="13" font-weight="bold" fill="#217a58">85%</text>
 
   <rect x="40" y="530" width="920" height="34" fill="#ffffff"/>
-  <text x="70" y="552" font-size="13" fill="#1a2733">10</text>
-  <text x="210" y="552" font-size="13" fill="#1a2733">1.500 USD</text>
-  <text x="380" y="552" font-size="13" fill="#1a2733">185 USD</text>
-  <text x="550" y="552" font-size="13" fill="#1a2733">18,50 USD</text>
-  <text x="760" y="552" font-size="13" fill="#1a2733">1.315 USD</text>
-  <text x="890" y="552" font-size="13" font-weight="bold" fill="#2f8f6b">88%</text>
+  <text x="70" y="552" font-size="13" fill="#0d1a23">10</text>
+  <text x="210" y="552" font-size="13" fill="#0d1a23">1.500 USD</text>
+  <text x="380" y="552" font-size="13" fill="#0d1a23">185 USD</text>
+  <text x="550" y="552" font-size="13" fill="#0d1a23">18,50 USD</text>
+  <text x="760" y="552" font-size="13" fill="#0d1a23">1.315 USD</text>
+  <text x="890" y="552" font-size="13" font-weight="bold" fill="#217a58">88%</text>
   <rect x="40" y="394" width="920" height="170" fill="none" stroke="#dbe5ec" stroke-width="1.5"/>
 
   <rect x="40" y="586" width="920" height="56" rx="8" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
-  <text x="62" y="610" font-size="13.5" font-weight="bold" fill="#1a2733">Lo que este cuadro no incluye, y sale de tu bolsillo: tu suscripcion de Claude Code, impuestos, comision de la pasarela y tu tiempo de soporte.</text>
-  <text x="62" y="632" font-size="13.5" fill="#4a5c6a">Por eso se planea con 65 a 75 por ciento de margen y no con 88. La diferencia es el colchon del cliente que escribe todos los martes.</text>
+  <text x="62" y="610" font-size="13.5" font-weight="bold" fill="#0d1a23">Lo que este cuadro no incluye, y sale de tu bolsillo: tu suscripcion de Claude Code, impuestos, comision de la pasarela y tu tiempo de soporte.</text>
+  <text x="62" y="632" font-size="13.5" fill="#39485a">Por eso se planea con 65 a 75 por ciento de margen y no con 88. La diferencia es el colchon del cliente que escribe todos los martes.</text>
 </svg>
 
   <svg class="fig" viewBox="0 0 1000 640" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
   <rect width="1000" height="640" fill="#ffffff"/>
-  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">El embudo: cuantos toques para el primer cliente</text>
-  <text x="40" y="72" font-size="14" fill="#6b7c8a">Rangos de expectativa de trabajo, no estadisticas de estudio. Ajustalos con tus propios numeros despues de 30 mensajes enviados.</text>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#0d1a23">El embudo: cuantos toques para el primer cliente</text>
+  <text x="40" y="72" font-size="14" fill="#566673">Rangos de expectativa de trabajo, no estadisticas de estudio. Ajustalos con tus propios numeros despues de 30 mensajes enviados.</text>
   <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
 
-  <text x="40" y="126" font-size="16" font-weight="bold" fill="#1a2733">Sin demo: mensaje generico en frio</text>
+  <text x="40" y="126" font-size="16" font-weight="bold" fill="#0d1a23">Sin demo: mensaje generico en frio</text>
 
   <polygon points="40,146 560,146 505,196 95,196" fill="#c9dae6"/>
-  <text x="300" y="177" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">100 negocios contactados</text>
+  <text x="300" y="177" font-size="15" font-weight="bold" fill="#0d1a23" text-anchor="middle">100 negocios contactados</text>
   <polygon points="98,202 502,202 460,252 140,252" fill="#a8c6d8"/>
-  <text x="300" y="233" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">8 a 15 responden algo</text>
+  <text x="300" y="233" font-size="15" font-weight="bold" fill="#0d1a23" text-anchor="middle">8 a 15 responden algo</text>
   <polygon points="143,258 457,258 425,308 175,308" fill="#7fabc4"/>
   <text x="300" y="289" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3 a 6 aceptan hablar</text>
   <polygon points="178,314 422,314 400,364 200,364" fill="#4d84a8"/>
   <text x="300" y="345" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1 a 2 llegan a propuesta</text>
-  <rect x="245" y="370" width="110" height="46" rx="6" fill="#1e5f8a"/>
+  <rect x="245" y="370" width="110" height="46" rx="6" fill="#1a5479"/>
   <text x="300" y="399" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">0 a 1 cierra</text>
 
-  <text x="540" y="126" font-size="16" font-weight="bold" fill="#1a2733">Con demo personalizada y video de 2 minutos</text>
+  <text x="540" y="126" font-size="16" font-weight="bold" fill="#0d1a23">Con demo personalizada y video de 2 minutos</text>
 
   <polygon points="540,146 960,146 918,196 582,196" fill="#dcecdf"/>
-  <text x="750" y="177" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">30 negocios calificados</text>
+  <text x="750" y="177" font-size="15" font-weight="bold" fill="#0d1a23" text-anchor="middle">30 negocios calificados</text>
   <polygon points="585,202 915,202 880,252 620,252" fill="#b4dcc2"/>
-  <text x="750" y="233" font-size="15" font-weight="bold" fill="#1a2733" text-anchor="middle">15 a 21 abren el link</text>
+  <text x="750" y="233" font-size="15" font-weight="bold" fill="#0d1a23" text-anchor="middle">15 a 21 abren el link</text>
   <polygon points="623,258 877,258 850,308 650,308" fill="#7fc2a0"/>
   <text x="750" y="289" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">8 a 12 responden algo</text>
   <polygon points="653,314 847,314 828,364 672,364" fill="#4aa27c"/>
   <text x="750" y="345" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3 a 5 llegan a propuesta</text>
-  <rect x="695" y="370" width="110" height="46" rx="6" fill="#2f8f6b"/>
+  <rect x="695" y="370" width="110" height="46" rx="6" fill="#217a58"/>
   <text x="750" y="399" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1 a 2 cierran</text>
 
   <rect x="40" y="444" width="920" height="94" rx="8" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="62" y="474" font-size="15" font-weight="bold" fill="#1e5f8a">Lo que cambia el embudo no es el volumen: es la demo.</text>
-  <text x="62" y="500" font-size="13.5" fill="#4a5c6a">Treinta mensajes con una plataforma ya construida a nombre del negocio superan a cien mensajes genericos, y toman menos tiempo total.</text>
-  <text x="62" y="522" font-size="13.5" fill="#4a5c6a">Con el proyecto base listo, personalizar una demo toma 25 minutos. Ese es el unico trabajo extra, y es el que compra la respuesta.</text>
+  <text x="62" y="474" font-size="15" font-weight="bold" fill="#1a5479">Lo que cambia el embudo no es el volumen: es la demo.</text>
+  <text x="62" y="500" font-size="13.5" fill="#39485a">Treinta mensajes con una plataforma ya construida a nombre del negocio superan a cien mensajes genericos, y toman menos tiempo total.</text>
+  <text x="62" y="522" font-size="13.5" fill="#39485a">Con el proyecto base listo, personalizar una demo toma 25 minutos. Ese es el unico trabajo extra, y es el que compra la respuesta.</text>
 
   <rect x="40" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
-  <text x="60" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 1</text>
-  <text x="60" y="602" font-size="12.5" fill="#6b7c8a">30 prospectos calificados en la lista</text>
+  <text x="60" y="582" font-size="13" font-weight="bold" fill="#0d1a23">Meta semana 1</text>
+  <text x="60" y="602" font-size="12.5" fill="#566673">30 prospectos calificados en la lista</text>
 
   <rect x="351" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
-  <text x="371" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 2</text>
-  <text x="371" y="602" font-size="12.5" fill="#6b7c8a">10 demos enviadas con video</text>
+  <text x="371" y="582" font-size="13" font-weight="bold" fill="#0d1a23">Meta semana 2</text>
+  <text x="371" y="602" font-size="12.5" fill="#566673">10 demos enviadas con video</text>
 
   <rect x="662" y="558" width="298" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
-  <text x="682" y="582" font-size="13" font-weight="bold" fill="#1a2733">Meta semana 3</text>
-  <text x="682" y="602" font-size="12.5" fill="#6b7c8a">3 llamadas de diagnostico agendadas</text>
+  <text x="682" y="582" font-size="13" font-weight="bold" fill="#0d1a23">Meta semana 3</text>
+  <text x="682" y="602" font-size="12.5" fill="#566673">3 llamadas de diagnostico agendadas</text>
 </svg>
 
   <svg class="fig" viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
   <rect width="1000" height="560" fill="#ffffff"/>
-  <text x="40" y="46" font-size="26" font-weight="bold" fill="#1a2733">De cero a la primera propuesta enviada en 7 dias</text>
-  <text x="40" y="72" font-size="14" fill="#6b7c8a">Dos a tres horas al dia. La skill que usas en cada dia esta marcada abajo de cada bloque.</text>
+  <text x="40" y="46" font-size="26" font-weight="bold" fill="#0d1a23">De cero a la primera propuesta enviada en 7 dias</text>
+  <text x="40" y="72" font-size="14" fill="#566673">Dos a tres horas al dia. La skill que usas en cada dia esta marcada abajo de cada bloque.</text>
   <line x1="40" y1="90" x2="960" y2="90" stroke="#dbe5ec" stroke-width="2"/>
 
   <line x1="76" y1="180" x2="924" y2="180" stroke="#c9dae6" stroke-width="4"/>
 
-  <circle cx="100" cy="180" r="22" fill="#1e5f8a"/>
+  <circle cx="100" cy="180" r="22" fill="#1a5479"/>
   <text x="100" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-  <circle cx="237" cy="180" r="22" fill="#1e5f8a"/>
+  <circle cx="237" cy="180" r="22" fill="#1a5479"/>
   <text x="237" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-  <circle cx="374" cy="180" r="22" fill="#1e5f8a"/>
+  <circle cx="374" cy="180" r="22" fill="#1a5479"/>
   <text x="374" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
-  <circle cx="511" cy="180" r="22" fill="#2f8f6b"/>
+  <circle cx="511" cy="180" r="22" fill="#217a58"/>
   <text x="511" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
-  <circle cx="648" cy="180" r="22" fill="#c9862a"/>
+  <circle cx="648" cy="180" r="22" fill="#8a5a12"/>
   <text x="648" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
-  <circle cx="785" cy="180" r="22" fill="#c9862a"/>
+  <circle cx="785" cy="180" r="22" fill="#8a5a12"/>
   <text x="785" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
-  <circle cx="922" cy="180" r="22" fill="#1a2733"/>
+  <circle cx="922" cy="180" r="22" fill="#0d1a23"/>
   <text x="922" y="187" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">7</text>
 
-  <text x="100" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Cuentas</text>
-  <text x="237" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">El cerebro</text>
-  <text x="374" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Construir</text>
-  <text x="511" y="140" font-size="13" font-weight="bold" fill="#2f8f6b" text-anchor="middle">Blindar</text>
-  <text x="648" y="140" font-size="13" font-weight="bold" fill="#c9862a" text-anchor="middle">La lista</text>
-  <text x="785" y="140" font-size="13" font-weight="bold" fill="#c9862a" text-anchor="middle">Las demos</text>
-  <text x="922" y="140" font-size="13" font-weight="bold" fill="#1a2733" text-anchor="middle">Enviar</text>
+  <text x="100" y="140" font-size="13" font-weight="bold" fill="#0d1a23" text-anchor="middle">Cuentas</text>
+  <text x="237" y="140" font-size="13" font-weight="bold" fill="#0d1a23" text-anchor="middle">El cerebro</text>
+  <text x="374" y="140" font-size="13" font-weight="bold" fill="#0d1a23" text-anchor="middle">Construir</text>
+  <text x="511" y="140" font-size="13" font-weight="bold" fill="#217a58" text-anchor="middle">Blindar</text>
+  <text x="648" y="140" font-size="13" font-weight="bold" fill="#8a5a12" text-anchor="middle">La lista</text>
+  <text x="785" y="140" font-size="13" font-weight="bold" fill="#8a5a12" text-anchor="middle">Las demos</text>
+  <text x="922" y="140" font-size="13" font-weight="bold" fill="#0d1a23" text-anchor="middle">Enviar</text>
 
   <rect x="42" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="56" y="246" font-size="11.5" fill="#4a5c6a">Supabase, GitHub</text>
-  <text x="56" y="264" font-size="11.5" fill="#4a5c6a">y Vercel creados.</text>
-  <text x="56" y="288" font-size="11.5" fill="#4a5c6a">Node y Claude</text>
-  <text x="56" y="306" font-size="11.5" fill="#4a5c6a">Code instalados.</text>
-  <text x="56" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/setup-cuentas</text>
-  <text x="56" y="356" font-size="10.5" fill="#6b7c8a">Meta: 3 cuentas</text>
+  <text x="56" y="246" font-size="11.5" fill="#39485a">Supabase, GitHub</text>
+  <text x="56" y="264" font-size="11.5" fill="#39485a">y Vercel creados.</text>
+  <text x="56" y="288" font-size="11.5" fill="#39485a">Node y Claude</text>
+  <text x="56" y="306" font-size="11.5" fill="#39485a">Code instalados.</text>
+  <text x="56" y="336" font-size="11" font-weight="bold" fill="#1a5479">/setup-cuentas</text>
+  <text x="56" y="356" font-size="10.5" fill="#566673">Meta: 3 cuentas</text>
 
   <rect x="179" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="193" y="246" font-size="11.5" fill="#4a5c6a">La entrevista y</text>
-  <text x="193" y="264" font-size="11.5" fill="#4a5c6a">el CLAUDE.md</text>
-  <text x="193" y="282" font-size="11.5" fill="#4a5c6a">del proyecto.</text>
-  <text x="193" y="306" font-size="11.5" fill="#4a5c6a">Reglas numeradas.</text>
-  <text x="193" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
-  <text x="193" y="356" font-size="10.5" fill="#6b7c8a">Meta: 1 archivo</text>
+  <text x="193" y="246" font-size="11.5" fill="#39485a">La entrevista y</text>
+  <text x="193" y="264" font-size="11.5" fill="#39485a">el CLAUDE.md</text>
+  <text x="193" y="282" font-size="11.5" fill="#39485a">del proyecto.</text>
+  <text x="193" y="306" font-size="11.5" fill="#39485a">Reglas numeradas.</text>
+  <text x="193" y="336" font-size="11" font-weight="bold" fill="#1a5479">/sistema-de-citas</text>
+  <text x="193" y="356" font-size="10.5" fill="#566673">Meta: 1 archivo</text>
 
   <rect x="316" y="220" width="116" height="150" rx="7" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="330" y="246" font-size="11.5" fill="#4a5c6a">Base de datos,</text>
-  <text x="330" y="264" font-size="11.5" fill="#4a5c6a">reserva publica</text>
-  <text x="330" y="282" font-size="11.5" fill="#4a5c6a">y panel privado.</text>
-  <text x="330" y="306" font-size="11.5" fill="#4a5c6a">Por etapas.</text>
-  <text x="330" y="336" font-size="11" font-weight="bold" fill="#1e5f8a">/sistema-de-citas</text>
-  <text x="330" y="356" font-size="10.5" fill="#6b7c8a">Meta: reserva real</text>
+  <text x="330" y="246" font-size="11.5" fill="#39485a">Base de datos,</text>
+  <text x="330" y="264" font-size="11.5" fill="#39485a">reserva publica</text>
+  <text x="330" y="282" font-size="11.5" fill="#39485a">y panel privado.</text>
+  <text x="330" y="306" font-size="11.5" fill="#39485a">Por etapas.</text>
+  <text x="330" y="336" font-size="11" font-weight="bold" fill="#1a5479">/sistema-de-citas</text>
+  <text x="330" y="356" font-size="10.5" fill="#566673">Meta: reserva real</text>
 
   <rect x="453" y="220" width="116" height="150" rx="7" fill="#f2f9f5" stroke="#b4dcc2" stroke-width="1.5"/>
-  <text x="467" y="246" font-size="11.5" fill="#4a5c6a">Revision de</text>
-  <text x="467" y="264" font-size="11.5" fill="#4a5c6a">seguridad y</text>
-  <text x="467" y="282" font-size="11.5" fill="#4a5c6a">publicacion con</text>
-  <text x="467" y="300" font-size="11.5" fill="#4a5c6a">URL real.</text>
-  <text x="467" y="330" font-size="11" font-weight="bold" fill="#2f8f6b">/seguridad-web</text>
-  <text x="467" y="346" font-size="11" font-weight="bold" fill="#2f8f6b">/publicar-online</text>
-  <text x="467" y="364" font-size="10.5" fill="#6b7c8a">Meta: link vivo</text>
+  <text x="467" y="246" font-size="11.5" fill="#39485a">Revision de</text>
+  <text x="467" y="264" font-size="11.5" fill="#39485a">seguridad y</text>
+  <text x="467" y="282" font-size="11.5" fill="#39485a">publicacion con</text>
+  <text x="467" y="300" font-size="11.5" fill="#39485a">URL real.</text>
+  <text x="467" y="330" font-size="11" font-weight="bold" fill="#217a58">/seguridad-web</text>
+  <text x="467" y="346" font-size="11" font-weight="bold" fill="#217a58">/publicar-online</text>
+  <text x="467" y="364" font-size="10.5" fill="#566673">Meta: link vivo</text>
 
   <rect x="590" y="220" width="116" height="150" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
-  <text x="604" y="246" font-size="11.5" fill="#4a5c6a">30 negocios</text>
-  <text x="604" y="264" font-size="11.5" fill="#4a5c6a">calificados con</text>
-  <text x="604" y="282" font-size="11.5" fill="#4a5c6a">la checklist de</text>
-  <text x="604" y="300" font-size="11.5" fill="#4a5c6a">8 senales.</text>
-  <text x="604" y="336" font-size="11" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
-  <text x="604" y="356" font-size="10.5" fill="#6b7c8a">Meta: 30 filas</text>
+  <text x="604" y="246" font-size="11.5" fill="#39485a">30 negocios</text>
+  <text x="604" y="264" font-size="11.5" fill="#39485a">calificados con</text>
+  <text x="604" y="282" font-size="11.5" fill="#39485a">la checklist de</text>
+  <text x="604" y="300" font-size="11.5" fill="#39485a">8 senales.</text>
+  <text x="604" y="336" font-size="11" font-weight="bold" fill="#8a5a12">/conseguir-clientes</text>
+  <text x="604" y="356" font-size="10.5" fill="#566673">Meta: 30 filas</text>
 
   <rect x="727" y="220" width="116" height="150" rx="7" fill="#fdfaf5" stroke="#e6d3b4" stroke-width="1.5"/>
-  <text x="741" y="246" font-size="11.5" fill="#4a5c6a">5 demos clonadas</text>
-  <text x="741" y="264" font-size="11.5" fill="#4a5c6a">y personalizadas.</text>
-  <text x="741" y="288" font-size="11.5" fill="#4a5c6a">5 videos Loom</text>
-  <text x="741" y="306" font-size="11.5" fill="#4a5c6a">de 2 minutos.</text>
-  <text x="741" y="336" font-size="11" font-weight="bold" fill="#c9862a">/conseguir-clientes</text>
-  <text x="741" y="356" font-size="10.5" fill="#6b7c8a">Meta: 5 videos</text>
+  <text x="741" y="246" font-size="11.5" fill="#39485a">5 demos clonadas</text>
+  <text x="741" y="264" font-size="11.5" fill="#39485a">y personalizadas.</text>
+  <text x="741" y="288" font-size="11.5" fill="#39485a">5 videos Loom</text>
+  <text x="741" y="306" font-size="11.5" fill="#39485a">de 2 minutos.</text>
+  <text x="741" y="336" font-size="11" font-weight="bold" fill="#8a5a12">/conseguir-clientes</text>
+  <text x="741" y="356" font-size="10.5" fill="#566673">Meta: 5 videos</text>
 
   <rect x="864" y="220" width="116" height="150" rx="7" fill="#f7f9fa" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="878" y="246" font-size="11.5" fill="#4a5c6a">Enviar los 5</text>
-  <text x="878" y="264" font-size="11.5" fill="#4a5c6a">mensajes con su</text>
-  <text x="878" y="282" font-size="11.5" fill="#4a5c6a">demo. Agendar</text>
-  <text x="878" y="300" font-size="11.5" fill="#4a5c6a">el seguimiento.</text>
-  <text x="878" y="336" font-size="11" font-weight="bold" fill="#1a2733">/conseguir-clientes</text>
-  <text x="878" y="356" font-size="10.5" fill="#6b7c8a">Meta: 5 enviados</text>
+  <text x="878" y="246" font-size="11.5" fill="#39485a">Enviar los 5</text>
+  <text x="878" y="264" font-size="11.5" fill="#39485a">mensajes con su</text>
+  <text x="878" y="282" font-size="11.5" fill="#39485a">demo. Agendar</text>
+  <text x="878" y="300" font-size="11.5" fill="#39485a">el seguimiento.</text>
+  <text x="878" y="336" font-size="11" font-weight="bold" fill="#0d1a23">/conseguir-clientes</text>
+  <text x="878" y="356" font-size="10.5" fill="#566673">Meta: 5 enviados</text>
 
   <rect x="40" y="400" width="920" height="60" rx="8" fill="#f4f8fb" stroke="#c9dae6" stroke-width="1.5"/>
-  <text x="62" y="426" font-size="14" font-weight="bold" fill="#1e5f8a">La trampa del dia 3.</text>
-  <text x="205" y="426" font-size="13.5" fill="#4a5c6a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga.</text>
-  <text x="62" y="448" font-size="13.5" fill="#4a5c6a">Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado vence a uno perfecto guardado.</text>
+  <text x="62" y="426" font-size="14" font-weight="bold" fill="#1a5479">La trampa del dia 3.</text>
+  <text x="205" y="426" font-size="13.5" fill="#39485a">Casi todo el mundo se queda puliendo el sistema y nunca llega al dia 5. El sistema no paga: el mensaje enviado paga.</text>
+  <text x="62" y="448" font-size="13.5" fill="#39485a">Si el dia 4 no tienes un link vivo, congela el sistema como esta y sigue igual. Un sistema al 80 por ciento enviado vence a uno perfecto guardado.</text>
 
   <rect x="40" y="478" width="920" height="60" rx="8" fill="#ffffff" stroke="#dbe5ec" stroke-width="1.5"/>
-  <text x="62" y="504" font-size="14" font-weight="bold" fill="#1a2733">Dia 8 en adelante.</text>
-  <text x="205" y="504" font-size="13.5" fill="#4a5c6a">Cinco toques de seguimiento en 14 dias, y 5 demos nuevas cada semana. El primer cierre suele caer entre la semana 3 y la 6.</text>
-  <text x="62" y="526" font-size="13.5" fill="#4a5c6a">Cuando cierres el primero: /entregar-al-cliente. Cuando notes que repites algo por tercera vez: /crear-skill. Ese es el bucle.</text>
+  <text x="62" y="504" font-size="14" font-weight="bold" fill="#0d1a23">Dia 8 en adelante.</text>
+  <text x="205" y="504" font-size="13.5" fill="#39485a">Cinco toques de seguimiento en 14 dias, y 5 demos nuevas cada semana. El primer cierre suele caer entre la semana 3 y la 6.</text>
+  <text x="62" y="526" font-size="13.5" fill="#39485a">Cuando cierres el primero: /entregar-al-cliente. Cuando notes que repites algo por tercera vez: /crear-skill. Ese es el bucle.</text>
 </svg>
 
   <svg class="fig" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg" font-family="Arial, Helvetica, sans-serif">
   <defs>
     <marker id="flecha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e5f8a"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1a5479"/>
     </marker>
     <marker id="flechaGris" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#8aa3b5"/>
@@ -734,39 +756,39 @@ footer{background:var(--bg);padding:30px 0;color:var(--mu);font-size:13.5px;bord
 
   <!-- Fila principal: el sistema funcionando -->
   <!-- Paciente -->
-  <rect x="40" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <rect x="40" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1a5479" stroke-width="2"/>
   <text x="125" y="152" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">El cliente final</text>
   <text x="125" y="172" text-anchor="middle" font-size="12" fill="#3d566b">Agenda desde su celular</text>
   <text x="125" y="189" text-anchor="middle" font-size="12" fill="#3d566b">a cualquier hora</text>
 
   <!-- Página en Vercel -->
-  <rect x="300" y="120" width="200" height="90" rx="14" fill="#1e5f8a"/>
+  <rect x="300" y="120" width="200" height="90" rx="14" fill="#1a5479"/>
   <text x="400" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#ffffff">Página de reservas</text>
   <text x="400" y="170" text-anchor="middle" font-size="12" fill="#cfe3f2">publicada en Vercel</text>
   <text x="400" y="188" text-anchor="middle" font-size="12" fill="#cfe3f2">valida horarios y reglas</text>
 
   <!-- Supabase -->
-  <rect x="590" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <rect x="590" y="120" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1a5479" stroke-width="2"/>
   <text x="675" y="150" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">Base de datos</text>
   <text x="675" y="170" text-anchor="middle" font-size="12" fill="#3d566b">Supabase</text>
   <text x="675" y="188" text-anchor="middle" font-size="12" fill="#3d566b">citas y bloqueos, con RLS</text>
 
   <!-- Panel -->
-  <rect x="590" y="280" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1e5f8a" stroke-width="2"/>
+  <rect x="590" y="280" width="170" height="90" rx="14" fill="#eaf3fa" stroke="#1a5479" stroke-width="2"/>
   <text x="675" y="310" text-anchor="middle" font-size="15" font-weight="bold" fill="#12344d">Panel del negocio</text>
   <text x="675" y="330" text-anchor="middle" font-size="12" fill="#3d566b">ve y atiende sus citas,</text>
   <text x="675" y="348" text-anchor="middle" font-size="12" fill="#3d566b">bloquea horarios · con clave</text>
 
   <!-- Flechas fila principal -->
-  <line x1="210" y1="165" x2="295" y2="165" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
-  <text x="252" y="155" text-anchor="middle" font-size="11" fill="#1e5f8a">reserva</text>
+  <line x1="210" y1="165" x2="295" y2="165" stroke="#1a5479" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="252" y="155" text-anchor="middle" font-size="11" fill="#1a5479">reserva</text>
 
-  <line x1="500" y1="150" x2="585" y2="150" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
-  <text x="542" y="140" text-anchor="middle" font-size="11" fill="#1e5f8a">guarda la cita</text>
-  <line x1="585" y1="180" x2="500" y2="180" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
-  <text x="542" y="199" text-anchor="middle" font-size="11" fill="#1e5f8a">horarios libres</text>
+  <line x1="500" y1="150" x2="585" y2="150" stroke="#1a5479" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="542" y="140" text-anchor="middle" font-size="11" fill="#1a5479">guarda la cita</text>
+  <line x1="585" y1="180" x2="500" y2="180" stroke="#1a5479" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <text x="542" y="199" text-anchor="middle" font-size="11" fill="#1a5479">horarios libres</text>
 
-  <line x1="675" y1="210" x2="675" y2="275" stroke="#1e5f8a" stroke-width="2.5" marker-end="url(#flecha)"/>
+  <line x1="675" y1="210" x2="675" y2="275" stroke="#1a5479" stroke-width="2.5" marker-end="url(#flecha)"/>
 
   <!-- Fila inferior: cómo se construye -->
   <text x="40" y="310" font-size="13" font-weight="bold" fill="#8aa3b5">CÓMO SE CONSTRUYE Y PUBLICA</text>
