@@ -108,14 +108,17 @@ img{max-width:100%;height:auto;display:block}
   display:flex;align-items:center;justify-content:center}
 .logo-marca span{width:11px;height:11px;border-radius:2px;
   background:linear-gradient(140deg,#fff,rgba(255,255,255,.6))}
-.barra nav{margin-left:auto;display:flex;gap:var(--e1)}
+.barra nav{margin-left:auto;display:flex;gap:var(--e1);min-width:0;flex-wrap:wrap;justify-content:flex-end}
 .barra nav a{
   color:var(--tx-suave);text-decoration:none;font-size:14px;font-weight:500;
   padding:var(--e2) var(--e3);border-radius:var(--r1);transition:var(--rapido);
   min-height:44px;display:flex;align-items:center;
 }
 .barra nav a:hover{color:var(--azul);background:var(--sup-2)}
-@media(max-width:760px){.barra nav a[data-opcional]{display:none}}
+@media(max-width:760px){.barra nav a[data-opcional]{display:none}
+  .barra nav a{padding:var(--e2) 10px;font-size:13.5px}}
+@media(max-width:460px){.barra nav a[data-opcional-2]{display:none}
+  .logo{font-size:13px}}
 
 /* ---------- portada ---------- */
 .hero{
@@ -331,7 +334,7 @@ footer strong{color:var(--tx-fuerte)}
     <a class="logo" href="#inicio"><span class="logo-marca"><span></span></span>Dasvo IA Builders</a>
     <nav aria-label="Secciones">
       
-      <a href="#video">Video</a><a href="#instalar">Instalar</a>
+      <a href="#video" data-opcional-2>Video</a><a href="#instalar">Instalar</a>
       <a href="#recursos">Recursos</a>
       <a href="#ayuda" data-opcional>Ayuda</a>
     </nav>
